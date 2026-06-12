@@ -54,3 +54,164 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+
+/* Pristine high-fidelity print specifications and layout scaling overrides */
+@media print {
+  /* Clean overall background resets for printing */
+  html, body, #app-root-container {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000000 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide all interactive, customization, navigation, and background details */
+  header#main-global-header,
+  #customizer-panel-aside,
+  #section-theme-widget,
+  #format-selection-container,
+  #hint-box,
+  #snowfall-ambient-viewport,
+  #snow-confetti-canvas,
+  #btn-throw-confetti,
+  #btn-copy-config,
+  #btn-reset-config,
+  #btn-global-print,
+  #slideshow-preview-header,
+  #menu-preview-header,
+  #poster-preview-header,
+  #tvads-preview-header,
+  #cocktails-preview-header,
+  #slideshow-controls,
+  #tvads-status,
+  #cocktails-lounge-badge,
+  #tv-ads-manual-navbar,
+  #slideshow-bullet-*,
+  #slideshow-prev-arrow,
+  #slideshow-next-arrow,
+  #slideshow-bullets-container,
+  #slideshow-play-pause-btn,
+  #menu-print-btn,
+  #poster-print-btn {
+    display: none !important;
+  }
+
+  /* Unravel full-bleed flex containers to prevent truncation */
+  #main-application-frame {
+    display: block !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #workspace-center-canvas {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* Expand canvas boundary slot to fit full physical display area */
+  #interactive-canvas-slot {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Scale individual selected formats to fit full output pages gracefully */
+  #menu-a4-backing-board {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  #menu-a4-canvas {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1.414 !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    border-radius: 0 !important;
+  }
+
+  #poster-frame-ambient {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  #poster-canvas {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1.414 !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    border-radius: 0 !important;
+  }
+
+  #slideshow-tv-frame {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  #slideshow-canvas {
+    padding: 2.5rem !important;
+  }
+
+  #slideshow-blur-bg {
+    display: none !important;
+  }
+
+  #tvads-case {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  #tvads-screen {
+    padding: 2.5rem !important;
+  }
+
+  #cocktails-chamber {
+    padding: 2.5rem !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+  }
+
+  /* Force background styling & color profiles across webkit rendering layouts during printing */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+}

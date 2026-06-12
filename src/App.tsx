@@ -98,7 +98,7 @@ export default function App() {
         <div className="flex items-center gap-2 self-start sm:self-center" id="global-header-actions">
           <button
             onClick={() => setConfettiTrigger(prev => prev + 1)}
-            className="bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-stone-950 px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 shadow-md shadow-amber-500/10 hover:scale-[1.03] active:scale-[0.97] transition-all"
+            className="bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-stone-950 px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 shadow-md shadow-amber-500/10 hover:scale-[1.03] active:scale-[0.97] transition-all cursor-pointer"
             title="Throw a celebratory burst of winter snow confetti!"
             id="btn-throw-confetti"
           >
@@ -106,8 +106,17 @@ export default function App() {
             <span>Let It Snow!</span>
           </button>
           <button
+            onClick={() => window.print()}
+            className="bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-900 border border-zinc-700 text-stone-100 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 hover:scale-[1.03] active:scale-[0.97] transition-all cursor-pointer"
+            title="Open print preview of active template format"
+            id="btn-global-print"
+          >
+            <Printer className="w-3.5 h-3.5 text-blue-400" />
+            <span>Print Preview</span>
+          </button>
+          <button
             onClick={handleCopyJson}
-            className="bg-zinc-800 hover:bg-zinc-700 text-stone-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 border border-zinc-700 transition"
+            className="bg-zinc-800 hover:bg-zinc-700 text-stone-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 border border-zinc-700 transition cursor-pointer"
             title="Copy current templates tree in full JSON format"
             id="btn-copy-config"
           >
