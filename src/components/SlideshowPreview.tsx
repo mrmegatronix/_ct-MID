@@ -130,15 +130,19 @@ export default function SlideshowPreview({ slides, theme, venueName }: Slideshow
             {/* Slide Image inside beautiful framed design */}
             <div className="md:col-span-5 relative" id="slideshow-image-container">
               {currentSlide.imageUrl ? (
-                <div className="relative rounded-xl overflow-hidden shadow-xl border border-white/10 group-hover:scale-102 transition-transform duration-500" id="slideshow-image-wrapper">
+                <div className="relative rounded-xl overflow-hidden shadow-xl border border-white/10 group-hover:scale-[1.02] transition-all duration-500 bg-black/30" id="slideshow-image-wrapper">
                   <img
                     src={currentSlide.imageUrl}
                     alt={currentSlide.title}
                     referrerPolicy="no-referrer"
-                    className="w-full aspect-4/3 object-cover select-none"
+                    className={`w-full aspect-4/3 select-none transition-all duration-300 ${
+                      currentSlide.imageUrl.includes('coasterstavern.co.nz') || currentSlide.imageUrl.includes('coasters-new-600')
+                        ? 'object-contain p-6 bg-black/45'
+                        : 'object-cover'
+                    }`}
                     id="slideshow-image-tag"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                 </div>
               ) : (
                 <div className="w-full aspect-4/3 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-stone-500 italic text-sm" id="slideshow-image-placeholder">

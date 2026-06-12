@@ -16,6 +16,20 @@ export const THEMES: ThemeColors[] = [
     iconColor: '#c5a059',
   },
   {
+    id: 'coasters-funky',
+    name: 'Coasters Gold Funk',
+    bgClass: 'bg-gradient-to-tr from-slate-950 via-purple-950 to-indigo-950 text-stone-100 selection:bg-fuchsia-500 selection:text-white',
+    cardClass: 'bg-black/75 backdrop-blur-xl border border-pink-500/50 shadow-2xl shadow-pink-950/60',
+    textPrimary: 'text-white',
+    textSecondary: 'text-pink-100/90',
+    accentClass: 'text-amber-400',
+    borderClass: 'border-fuchsia-500/40',
+    dividerClass: 'bg-gradient-to-r from-transparent via-pink-500 to-transparent',
+    badgeClass: 'bg-fuchsia-500/20 text-pink-300 border border-pink-500/40',
+    gradientText: 'bg-gradient-to-b from-yellow-300 via-pink-400 to-fuchsia-500 bg-clip-text text-transparent',
+    iconColor: '#ec4899',
+  },
+  {
     id: 'nordic-pine',
     name: 'Nordic Pine',
     bgClass: 'bg-emerald-950 text-stone-100 selection:bg-amber-600 selection:text-white',
@@ -72,7 +86,7 @@ export const INITIAL_TEMPLATE_DATA: TemplateData = {
       title: "Mid-Winter Christmas Feast",
       subtitle: "CELEBRATE THE YULETIDE CHEER IN REDWOOD",
       description: "Step off the cold Canterbury street into the warmth of our legendary coal guest fire. Our custom festive menu brings together roaring crackling roasts, slow braised West Coast game, and steaming mulled cider plates.",
-      imageUrl: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&q=80&w=800",
+      imageUrl: "https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png",
       features: ["Traditional Holiday Acoustic Carols Live", "Complimentary 'Pickaxe mulled cider' on arrival", "Authentic gold-country hospitality"]
     },
     {
@@ -80,7 +94,7 @@ export const INITIAL_TEMPLATE_DATA: TemplateData = {
       title: "Miner's Gold Winter Mixology",
       subtitle: "SEASONAL LIBATIONS & DRAUGHT BEER",
       description: "Warm up with our selection of flaming old fashioneds, house-spiced eggnogs and premium craft stouts. Perfectly designed to keep winter frost out of your boots.",
-      imageUrl: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800",
+      imageUrl: "https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png",
       features: ["House-made toasted honey & cinamon bitters", "Warm clay-pot serve toddy presentation", "Local stout and porter flight samplers"]
     },
     {
@@ -88,7 +102,7 @@ export const INITIAL_TEMPLATE_DATA: TemplateData = {
       title: "Book Your Solstice Table",
       subtitle: "REDWOOD'S FAVOURITE COZY SANCTUARY",
       description: "Perfect for family yule gatherings, workplace Christmas celebrations, or a cozy evening out with mates. Dine next to gold-tinted lamps, polished timbers, and comforting warmth.",
-      imageUrl: "https://images.unsplash.com/photo-1571266028243-e4733b0f0bb1?auto=format&fit=crop&q=80&w=800",
+      imageUrl: "https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png",
       features: ["Platters for corporate and casual groups", "Custom reservation menus available", "No venue hire fees for local group reservations"]
     },
     {
@@ -96,7 +110,7 @@ export const INITIAL_TEMPLATE_DATA: TemplateData = {
       title: "Mid-Winter Quiz Night",
       subtitle: "COASTERS BRAIN SHOWDOWN BY THE COAL FIRE",
       description: "Assemble your sharpest crew for the ultimate Canterbury winter trivia challenge. Prizes include generous tavern gold bar tabs, special winter packages, and premium winter craft baskets.",
-      imageUrl: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800",
+      imageUrl: "https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png",
       features: ["Bar tabs & local craft gift baskets for winners", "Fireside dynamic group tables (up to 8)", "Delicious team sharing platters and warm mulled cider specials"]
     },
     {
@@ -104,7 +118,7 @@ export const INITIAL_TEMPLATE_DATA: TemplateData = {
       title: "Mid-Winter Karaoke Night",
       subtitle: "SING YOUR HEART OUT next to THE HEARTH",
       description: "Step onto Redwood's warmest stage! Unleash your inner rockstar with high-density acoustics under the gold lamps. We'll provide the liquid courage & festive backing choruses.",
-      imageUrl: "https://images.unsplash.com/photo-1516280440614-37939bbacd6a?auto=format&fit=crop&q=80&w=800",
+      imageUrl: "https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png",
       features: ["Golden Mic trophies & custom winter shooter specials", "Massive song library from retro classics to today's hits", "Complimentary warm-up shot for brave early stage acts"]
     }
   ],

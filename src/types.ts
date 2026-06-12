@@ -1,4 +1,4 @@
-export type ThemeId = 'coasters-tavern' | 'nordic-pine' | 'frosted-ice' | 'cozy-hearth';
+export type ThemeId = 'coasters-tavern' | 'coasters-funky' | 'nordic-pine' | 'frosted-ice' | 'cozy-hearth';
 
 export interface ThemeColors {
   id: ThemeId;

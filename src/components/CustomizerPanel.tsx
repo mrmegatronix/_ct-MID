@@ -52,7 +52,7 @@ export default function CustomizerPanel({ data, onChange }: CustomizerPanelProps
       subtitle: "SEASONAL EVENT",
       description: "Customize this slide using the sidebar controls! Describe your delicious roasted chestnuts, log cabins or events.",
       features: ["Complimentary drinks", "Premium fireside lounge seats"],
-      imageUrl: "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&q=80&w=800"
+      imageUrl: "https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png"
     };
     onChange({
       ...data,

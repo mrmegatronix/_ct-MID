@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface CoastersLogoProps {
   className?: string;
@@ -7,7 +7,16 @@ interface CoastersLogoProps {
 }
 
 export default function CoastersLogo({ className = '', size = 120, variant = 'gold' }: CoastersLogoProps) {
-  // Define color schemes based on requirements
+  const [hasError, setHasError] = useState(false);
+
+  // Define filter adjustments based on requested variants
+  const filterStyle = {
+    gold: '',
+    monochrome: 'grayscale(1) brightness(0.9) opacity(0.8)',
+    white: 'brightness(0) invert(1)'
+  }[variant];
+
+  // Define color schemes based on requirements (for vector fallback)
   const colors = {
     gold: {
       outerBg: '#1e1b18', // very dark warm charcoal-brown
@@ -35,12 +44,23 @@ export default function CoastersLogo({ className = '', size = 120, variant = 'go
       style={{ width: size, height: size }}
       id="coasters-logo-wrapper"
     >
-      <svg
-        viewBox="0 0 220 220"
-        className="w-full h-full drop-shadow-xl"
-        xmlns="http://www.w3.org/2000/svg"
-        id="coasters-logo-svg"
-      >
+      {!hasError ? (
+        <img
+          src="https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png"
+          className="w-full h-full object-contain transition-all duration-300 drop-shadow-md"
+          style={{ filter: filterStyle }}
+          referrerPolicy="no-referrer"
+          alt="Coasters Tavern Logo"
+          onError={() => setHasError(true)}
+          id="coasters-logo-img"
+        />
+      ) : (
+        <svg
+          viewBox="0 0 220 220"
+          className="w-full h-full drop-shadow-xl"
+          xmlns="http://www.w3.org/2000/svg"
+          id="coasters-logo-svg"
+        >
         <defs>
           {/* Circular text paths */}
           {/* Upper arch text path (clockwise, left to right around the top half) */}
@@ -178,6 +198,7 @@ export default function CoastersLogo({ className = '', size = 120, variant = 'go
           <rect x="-18" y="25" width="36" height="5" rx="1" fill={colors.symbolColor} />
         </g>
       </svg>
+      )}
     </div>
   );
 }

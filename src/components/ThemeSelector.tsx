@@ -24,6 +24,7 @@ export default function ThemeSelector({ currentThemeId, onChange }: ThemeSelecto
           // Determine sample preview circles based on theme colors
           let circleColors = '';
           if (t.id === 'coasters-tavern') circleColors = 'from-stone-900 to-[#c5a059]';
+          if (t.id === 'coasters-funky') circleColors = 'from-fuchsia-600 via-pink-500 to-amber-400';
           if (t.id === 'nordic-pine') circleColors = 'from-emerald-800 to-amber-500';
           if (t.id === 'frosted-ice') circleColors = 'from-slate-900 to-cyan-400';
           if (t.id === 'cozy-hearth') circleColors = 'from-rose-900 to-amber-300';
