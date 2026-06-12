@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,750;1,400;1,600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Cinzel", Georgia, serif;
+  --font-display: "Cinzel", "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom styling for realistic previews */
+@layer utilities {
+  .a4-ratio {
+    aspect-ratio: 1 / 1.414;
+  }
+  .a3-ratio {
+    aspect-ratio: 1 / 1.414;
+  }
+  .tv-ratio {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Snowfall Keyframes and Animation */
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  pointer-events: none;
+  animation: fall linear infinite;
+}
+
+/* Elegant scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

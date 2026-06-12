@@ -1,0 +1,8 @@
+{
+  "name": "Mid-Winter Christmas Templates",
+  "description": "An exquisite synchronized design hub to customize, visualize, and print Mid-Winter Christmas and Solstice celebration materials including interactive web slideshows, A4 restaurant menus, A3 vertical flyers/posters, 1080p lobby TV digital signage advertisements, and lounge cocktail menus.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
