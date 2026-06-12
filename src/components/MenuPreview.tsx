@@ -84,6 +84,23 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
               </p>
             </div>
 
+            {/* Special Set Menu Promotional Banner */}
+            <div className={`mt-1 mb-4 mx-4 p-3.5 rounded-xl border text-center transition-all duration-350 relative overflow-hidden bg-white/5 ${theme.borderClass}`} id="special-menu-promo-banner">
+              <div className="absolute top-0 right-0 p-1 text-xs opacity-20 select-none">❅</div>
+              <div className="absolute bottom-0 left-0 p-1 text-xs opacity-20 select-none">❅</div>
+              <div className={`text-[10px] tracking-[0.3em] font-display font-black uppercase text-center flex items-center justify-center gap-1.5 mb-1 ${theme.accentClass}`} id="promo-banner-badge">
+                <Sparkles className="w-3.5 h-3.5" /> SPECIAL MID-WINTER SET MENU
+              </div>
+              <p className="text-[11px] text-white font-serif tracking-wide leading-relaxed font-semibold">
+                Celebrating with <span className={theme.accentClass}>7 Days</span> of Slow-Braised Goodness & Roast Berkshire Crackling
+              </p>
+              <div className="mt-1.5 flex items-center justify-center gap-2 text-[9px] font-mono tracking-widest text-[#d6cfc5]/95">
+                <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-extrabold uppercase animate-pulse">RUNS FOR A FULL WEEK</span>
+                <span>•</span>
+                <span className="uppercase italic">Dates undecided (Booking slots released soon)</span>
+              </div>
+            </div>
+
             {/* Menu Categories Grid / Layout */}
             <div className="flex-1 flex flex-col justify-around gap-6 py-2 my-auto" id="menu-sections-wrapper">
               

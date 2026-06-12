@@ -122,6 +122,29 @@ export default function PosterPreview({ data, theme }: PosterPreviewProps) {
               </div>
             </div>
 
+            {/* Mid-Winter Special Events & Promos on the Poster */}
+            <div className="grid grid-cols-2 gap-2 my-1.5 relative z-10" id="poster-events-grid">
+              <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-left" id="poster-event-quiz">
+                <span className={`text-[8px] font-mono font-black tracking-widest block uppercase ${theme.accentClass}`}>🎙️ QUIZ SHOWDOWN</span>
+                <span className="text-[10px] font-serif font-extrabold text-white block mt-0.5">Mid-Winter Quiz Nite</span>
+                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Trivia battles by the guest fire, spot prizes & major gold bar tabs.</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-left" id="poster-event-karaoke">
+                <span className={`text-[8px] font-mono font-black tracking-widest block uppercase ${theme.accentClass}`}>🎵 GOLDEN MIC STAGE</span>
+                <span className="text-[10px] font-serif font-extrabold text-white block mt-0.5">Mid-Winter Karaoke Nite</span>
+                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Sing classics next to roaring firewood. Free warm shooters!</span>
+              </div>
+            </div>
+
+            {/* Special Menu Advertisement banner on Poster */}
+            <div className={`border rounded-lg py-2 px-3 text-center my-1 relative z-10 bg-white/5 ${theme.borderClass}`} id="poster-special-menu-box">
+              <span className="text-[8px] font-mono uppercase tracking-widest text-amber-400 block font-bold animate-pulse">❄️ SEVEN DAY WINTER FESTIVAL FESTIVITIES ❄️</span>
+              <p className="text-[10px] sm:text-[11px] font-bold text-white leading-tight font-serif mt-0.5">
+                Mid-Winter Special Set Menu
+              </p>
+              <span className="text-[8px] text-stone-300 uppercase font-mono tracking-widest block mt-0.5">Running for 1 full week • Dates undecided (TBC soon)</span>
+            </div>
+
           </div>
 
           {/* Ticket pricing & CTA section */}

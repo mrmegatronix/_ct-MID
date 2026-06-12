@@ -90,6 +90,22 @@ export const INITIAL_TEMPLATE_DATA: TemplateData = {
       description: "Perfect for family yule gatherings, workplace Christmas celebrations, or a cozy evening out with mates. Dine next to gold-tinted lamps, polished timbers, and comforting warmth.",
       imageUrl: "https://images.unsplash.com/photo-1571266028243-e4733b0f0bb1?auto=format&fit=crop&q=80&w=800",
       features: ["Platters for corporate and casual groups", "Custom reservation menus available", "No venue hire fees for local group reservations"]
+    },
+    {
+      id: "slide-4",
+      title: "Mid-Winter Quiz Night",
+      subtitle: "COASTERS BRAIN SHOWDOWN BY THE COAL FIRE",
+      description: "Assemble your sharpest crew for the ultimate Canterbury winter trivia challenge. Prizes include generous tavern gold bar tabs, special winter packages, and premium winter craft baskets.",
+      imageUrl: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800",
+      features: ["Bar tabs & local craft gift baskets for winners", "Fireside dynamic group tables (up to 8)", "Delicious team sharing platters and warm mulled cider specials"]
+    },
+    {
+      id: "slide-5",
+      title: "Mid-Winter Karaoke Night",
+      subtitle: "SING YOUR HEART OUT next to THE HEARTH",
+      description: "Step onto Redwood's warmest stage! Unleash your inner rockstar with high-density acoustics under the gold lamps. We'll provide the liquid courage & festive backing choruses.",
+      imageUrl: "https://images.unsplash.com/photo-1516280440614-37939bbacd6a?auto=format&fit=crop&q=80&w=800",
+      features: ["Golden Mic trophies & custom winter shooter specials", "Massive song library from retro classics to today's hits", "Complimentary warm-up shot for brave early stage acts"]
     }
   ],
   menuItems: [
@@ -224,6 +240,27 @@ export const INITIAL_TEMPLATE_DATA: TemplateData = {
       subheadline: "ACOUSTIC COUNTRY FOLK & IRISH CHORALS LIVE FROM 7:00 PM",
       accentText: "Draught stout flowing cold, roaring firewood blazing hot. Truly legendary Christchurch nights.",
       duration: 8
+    },
+    {
+      id: "tv-4",
+      headline: "Mid-Winter Quiz Night",
+      subheadline: "BRAIN SHOWDOWN | TRIVIA & COLD IN-HOUSE BEERS BY THE HEARTH",
+      accentText: "Gather up your mates for local trivia, delicious winter plates, and generous gold cash bar tabs.",
+      duration: 9
+    },
+    {
+      id: "tv-5",
+      headline: "Mid-Winter Karaoke Night",
+      subheadline: "SING YOUR HEART OUT | COZY SPOTLIGHT STAGE",
+      accentText: "Grab the golden mic next to Redwood's roaring guest fire. Warm up shot provided with your name on it!",
+      duration: 9
+    },
+    {
+      id: "tv-6",
+      headline: "Special Weekly Set Menu",
+      subheadline: "7-DAY FEAST SPECTACULAR | BOOKINGS ACCEPTS/DATES TBC",
+      accentText: "A chef-crafted 3-course banquet running for an entire week. Keep an eye out for final dates release!",
+      duration: 10
     }
   ]
 };

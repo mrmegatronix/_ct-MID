@@ -10,6 +10,7 @@ import PosterPreview from './components/PosterPreview';
 import TvAdvertsPreview from './components/TvAdvertsPreview';
 import CocktailListPreview from './components/CocktailListPreview';
 import CustomizerPanel from './components/CustomizerPanel';
+import SnowConfetti from './components/SnowConfetti';
 
 import { 
   Compass, Sliders, Snowflake, Tv, Wine, Sparkles, Star, Printer, Layout, RotateCcw, Copy, Check
@@ -21,6 +22,7 @@ export default function App() {
   const [activeFormat, setActiveFormat] = useState<'slideshow' | 'menu' | 'poster' | 'tv-ads' | 'cocktails'>('slideshow');
   const [copied, setCopied] = useState(false);
   const [snowConfig, setSnowConfig] = useState<{ id: number; left: number; delay: number; duration: number; size: number }[]>([]);
+  const [confettiTrigger, setConfettiTrigger] = useState(0);
 
   // Find currently active theme values
   const activeTheme = THEMES.find((t) => t.id === currentThemeId) || THEMES[0];
@@ -94,6 +96,15 @@ export default function App() {
         </div>
 
         <div className="flex items-center gap-2 self-start sm:self-center" id="global-header-actions">
+          <button
+            onClick={() => setConfettiTrigger(prev => prev + 1)}
+            className="bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-stone-950 px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 shadow-md shadow-amber-500/10 hover:scale-[1.03] active:scale-[0.97] transition-all"
+            title="Throw a celebratory burst of winter snow confetti!"
+            id="btn-throw-confetti"
+          >
+            <span className="text-[14px] leading-none shrink-0 animate-pulse">❄️</span>
+            <span>Let It Snow!</span>
+          </button>
           <button
             onClick={handleCopyJson}
             className="bg-zinc-800 hover:bg-zinc-700 text-stone-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 border border-zinc-700 transition"
@@ -231,6 +242,9 @@ export default function App() {
         </aside>
 
       </div>
+
+      {/* Dynamic Celebration Snowy Confetti Layer */}
+      <SnowConfetti triggerCount={confettiTrigger} />
     </div>
   );
 }
