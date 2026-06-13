@@ -1,5 +1,6 @@
 {
   "name": "react-example",
+  "homepage": "https://mrmegatronix.github.io/_ct-MID/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -33,6 +34,7 @@
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "vite-plugin-singlefile": "^2.3.3"
   }
 }

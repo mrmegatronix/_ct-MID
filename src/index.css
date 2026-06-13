@@ -90,7 +90,7 @@
   #tvads-status,
   #cocktails-lounge-badge,
   #tv-ads-manual-navbar,
-  #slideshow-bullet-*,
+  [id^="slideshow-bullet-"],
   #slideshow-prev-arrow,
   #slideshow-next-arrow,
   #slideshow-bullets-container,
