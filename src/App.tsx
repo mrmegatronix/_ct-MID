@@ -60,6 +60,20 @@ export default function App() {
     { id: 'cocktails', label: 'Cocktail List', icon: <Wine className="w-4 h-4" />, desc: 'Cozy lounge sensory menu' },
   ] as const;
 
+  const isDisplayMode = window.location.search.includes('display=true');
+
+  if (isDisplayMode) {
+    return (
+      <div className="w-screen h-screen bg-black overflow-hidden flex items-center justify-center">
+        <SlideshowPreview 
+          slides={templateData.slides} 
+          theme={activeTheme} 
+          venueName={templateData.generalSettings.venueName} 
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 flex flex-col font-sans relative overflow-hidden" id="app-root-container">
       

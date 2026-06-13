@@ -83,27 +83,38 @@ export const INITIAL_TEMPLATE_DATA: TemplateData = {
   slides: [
     {
       id: "slide-1",
-      title: "Mid-Winter Christmas Feast",
-      subtitle: "JULY 13TH UNTIL 19TH | CELEBRATE THE YULETIDE CHEER IN REDWOOD",
-      description: "Step off the cold Canterbury street into the warmth of our legendary coal guest fire. Our custom festive menu brings together roaring crackling roasts, slow braised West Coast game, and steaming mulled wine.",
+      title: "Mid-Winter Starters",
+      subtitle: "MENU: MON 13TH - SUN 19TH",
+      description: "Warm up with our crafted starters, featuring rich seasonal flavours and local ingredients.",
       imageUrl: "https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png",
-      features: ["Traditional Holiday Acoustic Carols Live", "Complimentary 'Pickaxe mulled wine' on arrival", "Authentic gold-country hospitality"]
+      features: [
+        "Black Gold Mushroom & Charcoal Porter Soup",
+        "Solstice Pan-Seared West Coast Venison"
+      ]
     },
     {
       id: "slide-2",
-      title: "Miner's Gold Winter Mixology",
-      subtitle: "SEASONAL LIBATIONS & DRAUGHT BEER",
-      description: "Warm up with our selection of flaming old fashioneds, house-spiced eggnogs and premium craft stouts. Perfectly designed to keep winter frost out of your boots.",
+      title: "Mid-Winter Mains",
+      subtitle: "MENU: MON 13TH - SUN 19TH",
+      description: "Savour our legendary tavern cuts and roaring winter roasts, perfect for cold Canterbury nights.",
       imageUrl: "https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png",
-      features: ["House-made toasted honey & cinamon bitters", "Warm clay-pot serve toddy presentation", "Local stout and porter flight samplers"]
+      features: [
+        "The Gold Rush Prime Ribeye Steak",
+        "Roast Berkshire Pork & Crackling Tower",
+        "Coal-Baked Alpine Pumpkin Tart"
+      ]
     },
     {
       id: "slide-3",
-      title: "Book Your Solstice Table",
-      subtitle: "REDWOOD'S FAVOURITE COZY SANCTUARY",
-      description: "Perfect for family yule gatherings, workplace Christmas celebrations, or a cozy evening out with mates. Dine next to gold-tinted lamps, polished timbers, and comforting warmth.",
+      title: "Desserts & Winter Libations",
+      subtitle: "MENU: MON 13TH - SUN 19TH",
+      description: "Finish your meal with our decadent house-made puddings and warming winter cocktails.",
       imageUrl: "https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png",
-      features: ["Book your table today!"]
+      features: [
+        "Sticky Date & Oatmeal Stout Pudding",
+        "The Fireplace Apple & Blackberry Sizzler",
+        "The Gold Miner's Lantern Spiced Tonic"
+      ]
     },
     {
       id: "slide-4",

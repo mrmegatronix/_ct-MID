@@ -40,37 +40,42 @@ export default function SlideshowPreview({ slides, theme, venueName }: Slideshow
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full" id="slideshow-root">
-      <div className="flex items-center justify-between" id="slideshow-preview-header">
-        <div id="slideshow-description-sub">
-          <h3 className="text-sm font-semibold text-stone-200 flex items-center gap-2">
-            <Compass className="w-4 h-4 text-amber-400" /> Interactive Web Slideshow
-          </h3>
-          <p className="text-xs text-stone-400">Perfect for event display screens, website landing sections or table-tablet displays</p>
+    <div className="flex flex-col gap-4 w-full h-full" id="slideshow-root">
+      {!window.location.search.includes('display=true') && (
+        <div className="flex items-center justify-between" id="slideshow-preview-header">
+          <div id="slideshow-description-sub">
+            <h3 className="text-sm font-semibold text-stone-200 flex items-center gap-2">
+              <Compass className="w-4 h-4 text-amber-400" /> Interactive Web Slideshow
+            </h3>
+            <p className="text-xs text-stone-400">Perfect for event display screens, website landing sections or table-tablet displays</p>
+          </div>
+          <div className="flex items-center gap-2 bg-stone-900 border border-stone-800 px-3 py-1 rounded-full text-xs" id="slideshow-controls">
+            <button
+              onClick={() => setIsPlaying(!isPlaying)}
+              className="text-stone-300 hover:text-white transition flex items-center gap-1.5"
+              id="slideshow-play-pause-btn"
+            >
+              {isPlaying ? (
+                <>
+                  <Pause className="w-3.5 h-3.5 fill-stone-300 text-stone-300" />
+                  <span className="text-[10px] font-mono">AUTOPLAYING</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 fill-stone-300 text-stone-300" />
+                  <span className="text-[10px] font-mono">PAUSED</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
-        <div className="flex items-center gap-2 bg-stone-900 border border-stone-800 px-3 py-1 rounded-full text-xs" id="slideshow-controls">
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="text-stone-300 hover:text-white transition flex items-center gap-1.5"
-            id="slideshow-play-pause-btn"
-          >
-            {isPlaying ? (
-              <>
-                <Pause className="w-3.5 h-3.5 fill-stone-300 text-stone-300" />
-                <span className="text-[10px] font-mono">AUTOPLAYING</span>
-              </>
-            ) : (
-              <>
-                <Play className="w-3.5 h-3.5 fill-stone-300 text-stone-300" />
-                <span className="text-[10px] font-mono">PAUSED</span>
-              </>
-            )}
-          </button>
-        </div>
-      </div>
+      )}
 
       {/* 16:9 Display Frame with realistic TV bezel style */}
-      <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-stone-800 shadow-2xl bg-zinc-950 flex flex-col group" id="slideshow-tv-frame">
+      <div 
+        className={`relative w-full ${window.location.search.includes('display=true') ? 'h-full' : 'aspect-video rounded-2xl border border-stone-800 shadow-2xl'} overflow-hidden bg-zinc-950 flex flex-col group`} 
+        id="slideshow-tv-frame"
+      >
         {/* Ambient background glow matching current slide if available */}
         {currentSlide.imageUrl && (
           <div 
