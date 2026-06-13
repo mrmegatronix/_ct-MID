@@ -127,12 +127,12 @@ export default function PosterPreview({ data, theme }: PosterPreviewProps) {
               <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-left" id="poster-event-quiz">
                 <span className={`text-[8px] font-mono font-black tracking-widest block uppercase ${theme.accentClass}`}>🎙️ QUIZ SHOWDOWN</span>
                 <span className="text-[10px] font-serif font-extrabold text-white block mt-0.5">Quiz Nite • Wed 15th July</span>
-                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Wednesday, July 15th — Trivia battles by the guest fire, spot prizes & major bar tabs.</span>
+                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Wednesday, July 15th — Trivia battles by the guest fire, spot prizes & bar tabs. <b className="text-amber-400 font-bold block mt-0.5">🏆 Prizes for best dressed!</b></span>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-left" id="poster-event-karaoke">
                 <span className={`text-[8px] font-mono font-black tracking-widest block uppercase ${theme.accentClass}`}>🎵 GOLDEN MIC STAGE</span>
                 <span className="text-[10px] font-serif font-extrabold text-white block mt-0.5">Karaoke • Sat 18th July</span>
-                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Saturday, July 18th at 8:00 PM — Sing classics next to roaring firewood. Free warm shooters!</span>
+                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Saturday, July 18th at 8:00 PM — Sing classics next to roaring firewood. <b className="text-amber-400 font-bold block mt-0.5">🏆 Prizes for best dressed!</b></span>
               </div>
             </div>
 
