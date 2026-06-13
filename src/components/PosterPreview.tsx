@@ -126,13 +126,13 @@ export default function PosterPreview({ data, theme }: PosterPreviewProps) {
             <div className="grid grid-cols-2 gap-2 my-1.5 relative z-10" id="poster-events-grid">
               <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-left" id="poster-event-quiz">
                 <span className={`text-[8px] font-mono font-black tracking-widest block uppercase ${theme.accentClass}`}>🎙️ QUIZ SHOWDOWN</span>
-                <span className="text-[10px] font-serif font-extrabold text-white block mt-0.5">Mid-Winter Quiz Nite</span>
-                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Trivia battles by the guest fire, spot prizes & major gold bar tabs.</span>
+                <span className="text-[10px] font-serif font-extrabold text-white block mt-0.5">Quiz Nite • Wed 15th July</span>
+                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Wednesday, July 15th — Trivia battles by the guest fire, spot prizes & major bar tabs.</span>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-left" id="poster-event-karaoke">
                 <span className={`text-[8px] font-mono font-black tracking-widest block uppercase ${theme.accentClass}`}>🎵 GOLDEN MIC STAGE</span>
-                <span className="text-[10px] font-serif font-extrabold text-white block mt-0.5">Mid-Winter Karaoke Nite</span>
-                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Sing classics next to roaring firewood. Free warm shooters!</span>
+                <span className="text-[10px] font-serif font-extrabold text-white block mt-0.5">Karaoke • Sat 18th July</span>
+                <span className="text-[8px] text-stone-300 block leading-tight mt-0.5">Saturday, July 18th at 8:00 PM — Sing classics next to roaring firewood. Free warm shooters!</span>
               </div>
             </div>
 
@@ -142,7 +142,7 @@ export default function PosterPreview({ data, theme }: PosterPreviewProps) {
               <p className="text-[10px] sm:text-[11px] font-bold text-white leading-tight font-serif mt-0.5">
                 Mid-Winter Special Set Menu
               </p>
-              <span className="text-[8px] text-stone-300 uppercase font-mono tracking-widest block mt-0.5">Running for 1 full week • Dates undecided (TBC soon)</span>
+              <span className="text-[8px] text-stone-300 uppercase font-mono tracking-widest block mt-0.5">Running July 13th until 19th</span>
             </div>
 
           </div>

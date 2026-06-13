@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Slide, ThemeColors } from '../types';
 import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Calendar, Compass, Star, Sparkles } from 'lucide-react';
 import CoastersLogo from './CoastersLogo';
+import ConfettiSnow from './ConfettiSnow';
 
 interface SlideshowPreviewProps {
   slides: Slide[];
@@ -84,6 +85,9 @@ export default function SlideshowPreview({ slides, theme, venueName }: Slideshow
           {/* Subtle snowflake/star elements overlay */}
           <div className="absolute inset-0 pointer-events-none opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]" />
           
+          {/* Gold & Snow falling confetti flakes */}
+          <ConfettiSnow />
+          
           {/* Top header navigation */}
           <div className="flex items-center justify-between border-b pb-4 border-white/10 relative z-10" id="slideshow-top-bar">
             <span className="font-display font-bold tracking-widest text-xs sm:text-sm text-stone-100 flex items-center gap-3">
@@ -107,8 +111,8 @@ export default function SlideshowPreview({ slides, theme, venueName }: Slideshow
                   {currentSlide.subtitle}
                 </span>
               )}
-              <h2 className={`text-2xl sm:text-3xl md:text-4xl font-display font-bold leading-tight ${theme.textPrimary}`} id="slideshow-title">
-                {currentSlide.title}
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-black tracking-widest leading-tight uppercase" id="slideshow-title">
+                <span className={theme.gradientText}>{currentSlide.title}</span>
               </h2>
               <p className={`text-xs sm:text-sm md:text-base leading-relaxed ${theme.textSecondary}`} id="slideshow-description">
                 {currentSlide.description}

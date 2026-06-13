@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TvAd, ThemeColors } from '../types';
 import { Play, Pause, Tv, Bell, Sparkles, Flame, Volume2, ShieldAlert } from 'lucide-react';
 import CoastersLogo from './CoastersLogo';
+import ConfettiSnow from './ConfettiSnow';
 
 interface TvAdvertsPreviewProps {
   ads: TvAd[];
@@ -28,7 +29,7 @@ export default function TvAdvertsPreview({ ads, theme, venueName }: TvAdvertsPre
   const activeAd = ads[currentAdIndex] || ads[0] || {
     headline: "Welcome to the Chalet",
     subheadline: "YULETIDE COMMENCES SOON",
-    accentText: "Warm mulled cider on tap every evening.",
+    accentText: "Warm mulled wine steaming every evening.",
     duration: 8
   };
 
@@ -75,6 +76,9 @@ export default function TvAdvertsPreview({ ads, theme, venueName }: TvAdvertsPre
           {/* Snowflake fall vector backdrop */}
           <div className="absolute top-0 inset-x-0 bottom-0 pointer-events-none opacity-[0.08] bg-[radial-gradient(#fff_2px,transparent_2px)] [background-size:32px_32px]" />
 
+          {/* Dynamic Gold Confetti & Snow falling flakes */}
+          <ConfettiSnow />
+
           {/* TV Upper Logo/Header Panel */}
           <div className="flex items-center justify-between relative z-10" id="tvads-topbar">
             <div className="flex items-center gap-2" id="tvads-venue-group">
@@ -103,7 +107,7 @@ export default function TvAdvertsPreview({ ads, theme, venueName }: TvAdvertsPre
             </div>
 
             {/* Headline with incredible size and text gradient styling */}
-            <h1 className="text-3xl sm:text-4.5xl md:text-5xl font-display font-extrabold tracking-widest leading-none my-1 uppercase" id="tvads-headline">
+            <h1 className="text-3xl sm:text-4.5xl md:text-5xl font-serif font-black tracking-widest leading-none my-1 uppercase" id="tvads-headline">
               <span className={theme.gradientText}>
                 {activeAd.headline}
               </span>

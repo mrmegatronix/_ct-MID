@@ -67,8 +67,8 @@ export default function CocktailListPreview({ cocktails, theme, venueName }: Coc
               THE ALPINE BAR &amp; CELLAR
             </p>
           )}
-          <h2 className="text-lg sm:text-xl font-serif font-black tracking-widest mt-1 uppercase text-white">
-            ❅ MID-WINTER APERITIFS ❅
+          <h2 className="text-lg sm:text-xl font-serif font-black tracking-widest mt-1 uppercase" id="cocktails-headline-title">
+            <span className={theme.gradientText}>❅ MID-WINTER APERITIFS ❅</span>
           </h2>
           <div className="flex items-center justify-center gap-1 mt-1 text-[10px] text-stone-400 italic">
             <span>Infused over blazing fires &amp; frosty pines</span>

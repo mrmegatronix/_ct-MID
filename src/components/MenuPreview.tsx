@@ -71,8 +71,8 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
               <div className={`text-[10px] tracking-[0.3em] font-display font-medium uppercase mb-1.5 ${theme.accentClass}`} id="menu-pre-title">
                 YULETIDE CELEBRATIONS
               </div>
-              <h1 className="text-xl sm:text-2xl font-serif font-bold tracking-wider uppercase mb-1" id="menu-main-heading">
-                {venueName || "THE ALPINE SPRUCE"}
+              <h1 className="text-xl sm:text-2xl font-serif font-black tracking-widest uppercase mb-1" id="menu-main-heading">
+                <span className={theme.gradientText}>{venueName || "THE ALPINE SPRUCE"}</span>
               </h1>
               <div className="flex items-center justify-center gap-2 mb-2" id="menu-separator-header">
                 <span className="w-4 h-[1px] bg-white/20" />
@@ -89,15 +89,15 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
               <div className="absolute top-0 right-0 p-1 text-xs opacity-20 select-none">❅</div>
               <div className="absolute bottom-0 left-0 p-1 text-xs opacity-20 select-none">❅</div>
               <div className={`text-[10px] tracking-[0.3em] font-display font-black uppercase text-center flex items-center justify-center gap-1.5 mb-1 ${theme.accentClass}`} id="promo-banner-badge">
-                <Sparkles className="w-3.5 h-3.5" /> SPECIAL MID-WINTER SET MENU
+                <Sparkles className="w-3.5 h-3.5" /> SPECIAL $30.00 SET MENU • JULY 13TH - 19TH
               </div>
-              <p className="text-[11px] text-white font-serif tracking-wide leading-relaxed font-semibold">
-                Celebrating with <span className={theme.accentClass}>7 Days</span> of Slow-Braised Goodness & Roast Berkshire Crackling
+              <p className="text-[12px] text-white font-serif tracking-wide leading-relaxed font-bold">
+                Enjoy a Premium <span className={theme.accentClass}>2-Course Roast Feast</span> for only <span className="text-amber-400 font-extrabold">$30.00</span> per head
               </p>
               <div className="mt-1.5 flex items-center justify-center gap-2 text-[9px] font-mono tracking-widest text-[#d6cfc5]/95">
-                <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-extrabold uppercase animate-pulse">RUNS FOR A FULL WEEK</span>
+                <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-extrabold uppercase animate-pulse">CHOOSE YOUR ROAST</span>
                 <span>•</span>
-                <span className="uppercase italic">Dates undecided (Booking slots released soon)</span>
+                <span className="uppercase italic">Beef, Chicken, Pork + Christmas Pudding & Custard Included</span>
               </div>
             </div>
 
@@ -108,8 +108,8 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
               {categories.starters.length > 0 && (
                 <div className="flex flex-col gap-3" id="menu-starters-section">
                   <div className="flex flex-col items-center gap-1" id="menu-starters-header">
-                    <h3 className="text-xs sm:text-sm font-display font-bold tracking-[0.25em] uppercase text-white">
-                      ❅ LES ENTR&Eacute;ES ❅
+                    <h3 className="text-xs sm:text-sm font-serif font-black tracking-widest uppercase text-center" id="menu-starters-label">
+                      <span className={theme.gradientText}>❅ LES ENTR&Eacute;ES ❅</span>
                     </h3>
                     <div className={`w-16 h-[1.5px] ${theme.dividerClass}`} />
                   </div>
@@ -145,8 +145,8 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
               {categories.mains.length > 0 && (
                 <div className="flex flex-col gap-3" id="menu-mains-section">
                   <div className="flex flex-col items-center gap-1" id="menu-mains-header">
-                    <h3 className="text-xs sm:text-sm font-display font-bold tracking-[0.25em] uppercase text-white">
-                      ❅ LES PLATS PRINCIPAUX ❅
+                    <h3 className="text-xs sm:text-sm font-serif font-black tracking-widest uppercase text-center" id="menu-mains-label">
+                      <span className={theme.gradientText}>❅ LES PLATS PRINCIPAUX ❅</span>
                     </h3>
                     <div className={`w-16 h-[1.5px] ${theme.dividerClass}`} />
                   </div>
@@ -182,8 +182,8 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
               {categories.desserts.length > 0 && (
                 <div className="flex flex-col gap-3" id="menu-desserts-section">
                   <div className="flex flex-col items-center gap-1" id="menu-desserts-header">
-                    <h3 className="text-xs sm:text-sm font-display font-bold tracking-[0.25em] uppercase text-white">
-                      ❅ LES DESSERTS ❅
+                    <h3 className="text-xs sm:text-sm font-serif font-black tracking-widest uppercase text-center" id="menu-desserts-label">
+                      <span className={theme.gradientText}>❅ LES DESSERTS ❅</span>
                     </h3>
                     <div className={`w-16 h-[1.5px] ${theme.dividerClass}`} />
                   </div>

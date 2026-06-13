@@ -11,13 +11,14 @@ import TvAdvertsPreview from './components/TvAdvertsPreview';
 import CocktailListPreview from './components/CocktailListPreview';
 import CustomizerPanel from './components/CustomizerPanel';
 import SnowConfetti from './components/SnowConfetti';
+import GoldIcicles from './components/GoldIcicles';
 
 import { 
   Compass, Sliders, Snowflake, Tv, Wine, Sparkles, Star, Printer, Layout, RotateCcw, Copy, Check
 } from 'lucide-react';
 
 export default function App() {
-  const [currentThemeId, setCurrentThemeId] = useState<ThemeId>('coasters-tavern');
+  const [currentThemeId, setCurrentThemeId] = useState<ThemeId>('coasters-funky');
   const [templateData, setTemplateData] = useState<TemplateData>(INITIAL_TEMPLATE_DATA);
   const [activeFormat, setActiveFormat] = useState<'slideshow' | 'menu' | 'poster' | 'tv-ads' | 'cocktails'>('slideshow');
   const [copied, setCopied] = useState(false);
@@ -86,8 +87,8 @@ export default function App() {
         <div id="header-brand-title">
           <div className="flex items-center gap-2" id="header-logo-row">
             <span className="p-1 rounded bg-amber-500/10 text-amber-400 font-bold text-lg">❆</span>
-            <h1 className="text-base font-bold text-white tracking-widest font-serif uppercase">
-              MID-WINTER CHRISTMAS CREATOR
+            <h1 className="text-base font-black tracking-widest font-serif uppercase animate-pulse">
+              <span className={activeTheme.gradientText}>MID-WINTER CHRISTMAS CREATOR</span>
             </h1>
           </div>
           <p className="text-xs text-zinc-400 font-sans mt-0.5">
@@ -192,7 +193,8 @@ export default function App() {
           </div>
 
           {/* Core Interactive Preview Canvas Slot */}
-          <div className="bg-zinc-900/50 rounded-2xl p-4 sm:p-6 border border-zinc-850 flex items-center justify-center transition-all shadow-inner" id="interactive-canvas-slot">
+          <div className="bg-zinc-900/50 rounded-2xl p-4 sm:p-6 pt-10 sm:pt-12 border border-zinc-850 flex items-center justify-center transition-all shadow-inner relative overflow-hidden" id="interactive-canvas-slot">
+            <GoldIcicles />
             {activeFormat === 'slideshow' && (
               <SlideshowPreview 
                 slides={templateData.slides} 
