@@ -8,9 +8,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
 
         :root {
-            --gold: #c5a059;
-            --gold-bright: #d4af37;
-            --bg-dark: #0f0d0b;
+            --pink: #ec4899;
+            --fuchsia: #d946ef;
+            --gold-bright: #fbbf24;
+            --bg-dark: #1e1b4b;
         }
 
         body, html {
@@ -24,26 +25,25 @@
             color: #fff;
         }
 
-        /* A3 Poster Theme Background */
+        /* Gold Funk Theme Background */
         .poster-bg {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at center, #2a1f1a 0%, #0f0d0b 100%);
+            background: linear-gradient(to top right, #020617, #3b0764, #1e1b4b);
             z-index: 0;
         }
 
-        /* Golden Icicles */
+        /* Amber/Gold Icicles */
         .icicles {
             position: absolute;
             top: -5px;
             left: 0;
             width: 100%;
             height: 150px;
-            /* Simple jagged SVG for golden icicles */
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150" preserveAspectRatio="none"><path d="M0,0 L0,50 L20,120 L40,40 L60,100 L80,30 L100,150 L120,60 L140,110 L160,20 L180,90 L200,40 L220,130 L240,50 L260,110 L280,30 L300,140 L320,60 L340,100 L360,20 L380,120 L400,40 L420,110 L440,30 L460,150 L480,50 L500,120 L520,40 L540,100 L560,30 L580,130 L600,60 L620,110 L640,20 L660,140 L680,40 L700,120 L720,50 L740,100 L760,30 L780,150 L800,60 L820,110 L840,20 L860,130 L880,40 L900,120 L920,50 L940,100 L960,30 L980,140 L1000,50 L1000,0 Z" fill="%23c5a059" opacity="0.8"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150" preserveAspectRatio="none"><path d="M0,0 L0,50 L20,120 L40,40 L60,100 L80,30 L100,150 L120,60 L140,110 L160,20 L180,90 L200,40 L220,130 L240,50 L260,110 L280,30 L300,140 L320,60 L340,100 L360,20 L380,120 L400,40 L420,110 L440,30 L460,150 L480,50 L500,120 L520,40 L540,100 L560,30 L580,130 L600,60 L620,110 L640,20 L660,140 L680,40 L700,120 L720,50 L740,100 L760,30 L780,150 L800,60 L820,110 L840,20 L860,130 L880,40 L900,120 L920,50 L940,100 L960,30 L980,140 L1000,50 L1000,0 Z" fill="%23fbbf24" opacity="0.8"/></svg>');
             background-size: 100% 100%;
             z-index: 10;
-            filter: drop-shadow(0 5px 15px rgba(197, 160, 89, 0.4));
+            filter: drop-shadow(0 5px 15px rgba(251, 191, 36, 0.4));
         }
 
         /* Snow Confetti Canvas */
@@ -87,8 +87,11 @@
         h1 {
             font-family: 'Cinzel', serif;
             font-size: 6vw;
-            color: var(--gold-bright);
-            text-shadow: 0 4px 20px rgba(197, 160, 89, 0.5);
+            background: linear-gradient(to bottom, #fde047, #f472b6, #d946ef);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 4px 20px rgba(236, 72, 153, 0.4);
             margin: 0 0 20px 0;
             line-height: 1.1;
         }
@@ -96,25 +99,25 @@
         h2 {
             font-family: 'Playfair Display', serif;
             font-size: 3vw;
-            color: #fff;
+            color: #fce7f3;
             margin: 0 0 30px 0;
             font-style: italic;
         }
 
         .date-badge {
             display: inline-block;
-            background: rgba(197, 160, 89, 0.15);
-            border: 2px solid var(--gold);
+            background: rgba(217, 70, 239, 0.2);
+            border: 2px solid rgba(236, 72, 153, 0.4);
             padding: 10px 30px;
             font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 1.8vw;
             letter-spacing: 2px;
-            color: var(--gold-bright);
+            color: #f9a8d4;
             border-radius: 50px;
             margin-bottom: 40px;
             text-transform: uppercase;
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
         }
 
         ul {
@@ -131,7 +134,7 @@
 
         li::before {
             content: '✦';
-            color: var(--gold);
+            color: var(--pink);
             margin-right: 15px;
             font-size: 1.8vw;
         }
@@ -160,8 +163,8 @@
         .progress-bar {
             height: 100%;
             width: 0%;
-            background: var(--gold-bright);
-            box-shadow: 0 0 10px var(--gold-bright);
+            background: var(--pink);
+            box-shadow: 0 0 10px var(--pink);
         }
 
     </style>
@@ -264,7 +267,7 @@
                 r: Math.random() * 4 + 1,
                 dx: Math.random() * 1 - 0.5,
                 dy: Math.random() * 2 + 1,
-                color: Math.random() > 0.8 ? '#c5a059' : '#ffffff', // Mix of snow and gold confetti
+                color: Math.random() > 0.8 ? '#fbbf24' : (Math.random() > 0.5 ? '#ec4899' : '#ffffff'), // Mix of amber, pink, and snow confetti
                 opacity: Math.random() * 0.8 + 0.2
             });
         }
