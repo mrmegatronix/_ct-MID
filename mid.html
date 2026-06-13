@@ -146,6 +146,24 @@
             z-index: 10;
         }
 
+        /* Progress Bar */
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(0,0,0,0.5);
+            z-index: 20;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--gold-bright);
+            box-shadow: 0 0 10px var(--gold-bright);
+        }
+
     </style>
 </head>
 <body>
@@ -158,13 +176,13 @@
         
         <!-- Slide 1: Menu -->
         <div class="slide active" id="slide-1">
-            <div class="date-badge">MON 13TH - SUN 19TH</div>
+            <div class="date-badge">JULY 13TH - 19TH</div>
             <h1>Mid-Winter Feast</h1>
-            <h2>Traditional Coasters Tavern Roasts</h2>
+            <h2>2-Course Set Menu — $30</h2>
             <ul>
-                <li>Slow-Roasted Canterbury Beef</li>
-                <li>Crackling Berkshire Pork</li>
-                <li>Steamed Christmas Pudding</li>
+                <li>Choice of Beef, Pork, or Chicken Roast</li>
+                <li>Christmas Pudding for Dessert</li>
+                <li>Served with rich, warm custard</li>
             </ul>
         </div>
 
@@ -176,7 +194,7 @@
             <ul>
                 <li>Starts at 7:00 PM Sharp</li>
                 <li>Bar tabs & craft baskets for winners</li>
-                <li>Fireside group tables available</li>
+                <li>Prizes for best dressed!</li>
             </ul>
         </div>
 
@@ -186,9 +204,9 @@
             <h1>Mid-Winter Karaoke</h1>
             <h2>Sing Your Heart Out</h2>
             <ul>
-                <li>Commences at 8:00 PM</li>
+                <li>Commences from 8:00 PM</li>
                 <li>Golden Mic trophies to be won</li>
-                <li>Complimentary warm-up shot for early acts</li>
+                <li>Prizes for best dressed!</li>
             </ul>
         </div>
 
@@ -196,18 +214,33 @@
 
     <div class="logo">COASTERS TAVERN</div>
 
+    <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+
     <script>
         // Slideshow Logic
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
 
+        const progressBar = document.getElementById('progress-bar');
+
+        function startProgress() {
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
+            setTimeout(() => {
+                progressBar.style.transition = 'width 60s linear';
+                progressBar.style.width = '100%';
+            }, 50);
+        }
+
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
+            startProgress();
         }
 
         setInterval(nextSlide, 60000); // 60 seconds per slide
+        startProgress(); // Initial start
 
         // Snow Confetti Logic
         const canvas = document.getElementById('snow-canvas');
