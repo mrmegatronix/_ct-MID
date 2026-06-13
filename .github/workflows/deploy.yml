@@ -40,6 +40,9 @@ jobs:
       - name: Build Production Assets
         run: npm run build
 
+      - name: Copy mid.html to dist
+        run: cp mid.html dist/ || true
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
