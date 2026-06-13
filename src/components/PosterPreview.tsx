@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PosterData, ThemeColors } from '../types';
-import { Calendar, Clock, MapPin, Ticket, Flame, Printer, Snowflake, Star } from 'lucide-react';
+import { Calendar, Clock, MapPin, Ticket, Printer, Snowflake, Star, Edit3 } from 'lucide-react';
 import CoastersLogo from './CoastersLogo';
 
 interface PosterPreviewProps {
   data: PosterData;
   theme: ThemeColors;
+  onUpdatePoster?: (field: keyof PosterData, value: string) => void;
 }
 
-export default function PosterPreview({ data, theme }: PosterPreviewProps) {
+export default function PosterPreview({ data, theme, onUpdatePoster }: PosterPreviewProps) {
+  const [editingId, setEditingId] = useState<string | null>(null);
+
   const handlePrint = () => {
     window.print();
   };
@@ -21,10 +24,14 @@ export default function PosterPreview({ data, theme }: PosterPreviewProps) {
             <Snowflake className="w-4 h-4 text-amber-400" /> A3 Event Poster (1:1.414 Vertical)
           </h3>
           <p className="text-xs text-stone-400">High-impact vertical display poster designed to be printed for lounge noticeboards or guest flyers</p>
+          <p className="text-[11px] text-amber-400/95 font-semibold mt-1 flex items-center gap-1">
+            <Edit3 className="w-3.5 h-3.5" /> 
+            <span>Click directly on any text or event block on the poster below to edit in place!</span>
+          </p>
         </div>
         <button
           onClick={handlePrint}
-          className="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-stone-950 font-medium px-4 py-1.5 rounded-lg text-xs flex items-center gap-1.5 transition-colors shadow-md"
+          className="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-stone-950 font-medium px-4 py-1.5 rounded-lg text-xs flex items-center gap-1.5 transition-colors shadow-md cursor-pointer"
           id="poster-print-btn"
         >
           <Printer className="w-3.5 h-3.5" />
@@ -71,33 +78,97 @@ export default function PosterPreview({ data, theme }: PosterPreviewProps) {
           </div>
 
           {/* Central Typography & Headline section */}
-          <div className="text-center my-auto py-4 relative z-10" id="poster-hero-text">
-            <h1 className="text-2xl sm:text-3.5xl font-serif font-black tracking-widest leading-none" id="poster-title-line">
-              <span className={theme.gradientText}>{data.title || "MID-WINTER CHRISTMAS"}</span>
-            </h1>
+          <div className="text-center my-auto py-4 relative z-10 w-full" id="poster-hero-text">
+            {editingId === 'title' ? (
+              <div className="flex justify-center w-full my-1">
+                <input
+                  type="text"
+                  value={data.title}
+                  onChange={(e) => onUpdatePoster?.('title', e.target.value)}
+                  onBlur={() => setEditingId(null)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') setEditingId(null);
+                  }}
+                  autoFocus
+                  className="text-center font-serif text-lg sm:text-xl font-black tracking-widest uppercase bg-stone-850 text-white border border-amber-500/50 rounded px-2 py-1 w-full max-w-sm focus:outline-none focus:ring-1 focus:ring-amber-400"
+                />
+              </div>
+            ) : (
+              <h1 
+                onClick={() => setEditingId('title')}
+                className="text-2xl sm:text-3.5xl font-serif font-black tracking-widest leading-none cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-500/30 rounded p-1 transition-all group flex items-center justify-center gap-1.5" 
+                id="poster-title-line"
+                title="Click to edit poster title"
+              >
+                <span className={theme.gradientText}>{data.title || "MID-WINTER CHRISTMAS"}</span>
+                <span className="text-[10px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">✏️</span>
+              </h1>
+            )}
             
-            <div className="flex items-center justify-center gap-2 my-3" id="poster-headline-divider">
-              <span className={`w-12 h-[1px] bg-gradient-to-r from-transparent to-white/40`} />
+            <div className="flex items-center justify-center gap-2 my-2" id="poster-headline-divider">
+              <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-white/40" />
               <span className="text-[10px] uppercase tracking-widest font-mono text-stone-300">FEAST &amp; FESTIVITIES</span>
-              <span className={`w-12 h-[1px] bg-gradient-to-l from-transparent to-white/40`} />
+              <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-white/40" />
             </div>
 
-            <p className="text-xs sm:text-sm text-stone-200 font-sans italic max-w-sm mx-auto font-medium px-4 leading-relaxed" id="poster-subtitle">
-              &ldquo;{data.subtitle || "A Solstice Feast of Fine Spices & Roaring Candles"}&rdquo;
-            </p>
+            {editingId === 'subtitle' ? (
+              <div className="flex justify-center w-full">
+                <input
+                  type="text"
+                  value={data.subtitle}
+                  onChange={(e) => onUpdatePoster?.('subtitle', e.target.value)}
+                  onBlur={() => setEditingId(null)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') setEditingId(null);
+                  }}
+                  autoFocus
+                  className="text-center font-sans text-xs italic bg-stone-850 text-stone-200 border border-amber-500/50 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full max-w-sm"
+                />
+              </div>
+            ) : (
+              <p 
+                onClick={() => setEditingId('subtitle')}
+                className="text-xs sm:text-sm text-stone-200 font-sans italic max-w-sm mx-auto font-medium px-4 leading-relaxed cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded p-1 transition-all group flex items-center justify-center gap-1.5" 
+                id="poster-subtitle"
+                title="Click to edit poster subtitle"
+              >
+                <span>&ldquo;{data.subtitle || "A Solstice Feast of Fine Spices & Roaring Candles"}&rdquo;</span>
+                <span className="text-[10px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">✏️</span>
+              </p>
+            )}
           </div>
 
           {/* Key Event Details Grid */}
-          <div className="flex flex-col gap-3 my-2 relative z-10" id="poster-details-container">
+          <div className="flex flex-col gap-3 my-2 relative z-10 w-full" id="poster-details-container">
             
             {/* Boxed detail modules */}
             <div className={`rounded-xl p-3 flex items-center gap-3 ${theme.cardClass}`} id="poster-module-date">
               <div className="p-2 rounded bg-white/10" id="poster-date-icon">
                 <Calendar className="w-4 h-4 text-amber-400" />
               </div>
-              <div className="text-left" id="poster-date-text-block">
+              <div className="text-left flex-1" id="poster-date-text-block">
                 <div className="text-[9px] font-mono text-stone-400 tracking-wider">EVENT DATE</div>
-                <div className="text-xs sm:text-sm font-semibold text-white">{data.dateText || "Saturday, July 25th"}</div>
+                {editingId === 'dateText' ? (
+                  <input
+                    type="text"
+                    value={data.dateText}
+                    onChange={(e) => onUpdatePoster?.('dateText', e.target.value)}
+                    onBlur={() => setEditingId(null)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') setEditingId(null);
+                    }}
+                    autoFocus
+                    className="font-semibold text-xs bg-stone-850 text-white border border-amber-500/40 rounded px-1.5 py-0.5 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full"
+                  />
+                ) : (
+                  <div 
+                    onClick={() => setEditingId('dateText')}
+                    className="text-xs sm:text-sm font-semibold text-white cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded px-1 py-0.5 flex items-center justify-between group transition-all"
+                  >
+                    <span>{data.dateText || "Saturday, July 25th"}</span>
+                    <span className="text-[9px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">✏️</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -105,9 +176,29 @@ export default function PosterPreview({ data, theme }: PosterPreviewProps) {
               <div className="p-2 rounded bg-white/10" id="poster-time-icon">
                 <Clock className="w-4 h-4 text-emerald-400" />
               </div>
-              <div className="text-left" id="poster-time-text-block">
+              <div className="text-left flex-1" id="poster-time-text-block">
                 <div className="text-[9px] font-mono text-stone-400 tracking-wider font-semibold">ARRIVAL CEREMONY</div>
-                <div className="text-xs sm:text-sm font-semibold text-white">{data.timeText || "6:30 PM Onwards"}</div>
+                {editingId === 'timeText' ? (
+                  <input
+                    type="text"
+                    value={data.timeText}
+                    onChange={(e) => onUpdatePoster?.('timeText', e.target.value)}
+                    onBlur={() => setEditingId(null)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') setEditingId(null);
+                    }}
+                    autoFocus
+                    className="font-semibold text-xs bg-stone-850 text-white border border-amber-500/40 rounded px-1.5 py-0.5 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full"
+                  />
+                ) : (
+                  <div 
+                    onClick={() => setEditingId('timeText')}
+                    className="text-xs sm:text-sm font-semibold text-white cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded px-1 py-0.5 flex items-center justify-between group transition-all"
+                  >
+                    <span>{data.timeText || "6:30 PM Onwards"}</span>
+                    <span className="text-[9px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">✏️</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -115,10 +206,50 @@ export default function PosterPreview({ data, theme }: PosterPreviewProps) {
               <div className="p-2 rounded bg-white/10" id="poster-loc-icon">
                 <MapPin className="w-4 h-4 text-red-400" />
               </div>
-              <div className="text-left" id="poster-loc-text-block">
+              <div className="text-left flex-1" id="poster-loc-text-block">
                 <div className="text-[9px] font-mono text-stone-400 tracking-wider font-semibold">THE CHALET VENTURE</div>
-                <div className="text-xs sm:text-sm font-semibold text-white">{data.venueName || "Alpine Chalet & Meadows"}</div>
-                <div className="text-[10px] text-stone-400 leading-tight">{data.venueAddress || "15 Golden Peak Road"}</div>
+                {editingId === 'venueName' ? (
+                  <input
+                    type="text"
+                    value={data.venueName}
+                    onChange={(e) => onUpdatePoster?.('venueName', e.target.value)}
+                    onBlur={() => setEditingId(null)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') setEditingId(null);
+                    }}
+                    autoFocus
+                    className="font-semibold text-xs bg-stone-850 text-white border border-amber-500/40 rounded px-1.5 py-0.5 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full"
+                  />
+                ) : (
+                  <div 
+                    onClick={() => setEditingId('venueName')}
+                    className="text-xs sm:text-sm font-semibold text-white cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded px-1 py-0.5 flex items-center justify-between group transition-all"
+                  >
+                    <span>{data.venueName || "Alpine Chalet & Meadows"}</span>
+                    <span className="text-[9px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">✏️</span>
+                  </div>
+                )}
+                {editingId === 'venueAddress' ? (
+                  <input
+                    type="text"
+                    value={data.venueAddress}
+                    onChange={(e) => onUpdatePoster?.('venueAddress', e.target.value)}
+                    onBlur={() => setEditingId(null)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') setEditingId(null);
+                    }}
+                    autoFocus
+                    className="text-[10px] bg-stone-850 text-stone-300 border border-amber-500/40 rounded px-1.5 py-0.5 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full mt-1"
+                  />
+                ) : (
+                  <div 
+                    onClick={() => setEditingId('venueAddress')}
+                    className="text-[10px] text-stone-300 leading-tight cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded px-1 py-0.5 flex items-center justify-between group mt-0.5 transition-all"
+                  >
+                    <span>{data.venueAddress || "15 Golden Peak Road"}</span>
+                    <span className="text-[8px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">✏️</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -150,20 +281,78 @@ export default function PosterPreview({ data, theme }: PosterPreviewProps) {
           {/* Ticket pricing & CTA section */}
           <div className="flex flex-col items-center gap-1.5 pb-2 text-center relative z-10" id="poster-booking-footer">
             
-            <div className={`text-[10px] sm:text-xs font-mono font-bold tracking-wider px-4 py-1.5 rounded-full ${theme.badgeClass}`} id="poster-ticket-badge">
-              <span className="flex items-center gap-1 justify-center">
-                <Ticket className="w-3.5 h-3.5" />
-                {data.ticketInfo}
-              </span>
-            </div>
+            {editingId === 'ticketInfo' ? (
+              <input
+                type="text"
+                value={data.ticketInfo}
+                onChange={(e) => onUpdatePoster?.('ticketInfo', e.target.value)}
+                onBlur={() => setEditingId(null)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') setEditingId(null);
+                }}
+                autoFocus
+                className="font-mono text-center text-xs bg-stone-850 text-white border border-amber-500/50 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full max-w-xs"
+              />
+            ) : (
+              <div 
+                onClick={() => setEditingId('ticketInfo')}
+                className={`text-[10px] sm:text-xs font-mono font-bold tracking-wider px-4 py-1.5 rounded-full ${theme.badgeClass} cursor-pointer hover:bg-white/10 hover:scale-[1.02] transition-all flex items-center justify-center gap-1.5 group`}
+                id="poster-ticket-badge"
+                title="Click to edit ticket info"
+              >
+                <Ticket className="w-3.5 h-3.5 text-amber-400" />
+                <span>{data.ticketInfo}</span>
+                <span className="text-[10px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">✏️</span>
+              </div>
+            )}
 
-            <p className="text-[9px] sm:text-[10px] font-semibold tracking-widest text-amber-400 mt-1 uppercase" id="poster-cta">
-              ★ {data.ctaText || "TABLES HIGHLY RESERVED"} ★
-            </p>
+            {editingId === 'ctaText' ? (
+              <input
+                type="text"
+                value={data.ctaText}
+                onChange={(e) => onUpdatePoster?.('ctaText', e.target.value)}
+                onBlur={() => setEditingId(null)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') setEditingId(null);
+                }}
+                autoFocus
+                className="font-bold text-center text-xs bg-stone-850 text-amber-400 border border-amber-500/50 rounded px-2 py-0.5 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full max-w-xs uppercase"
+              />
+            ) : (
+              <p 
+                onClick={() => setEditingId('ctaText')}
+                className="text-[9px] sm:text-[10px] font-semibold tracking-widest text-amber-400 mt-1 uppercase cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded px-1.5 py-0.5 flex items-center gap-1.5 group transition-all"
+                id="poster-cta"
+                title="Click to edit CTA text"
+              >
+                <span>★ {data.ctaText || "TABLES HIGHLY RESERVED"} ★</span>
+                <span className="text-[10px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">✏️</span>
+              </p>
+            )}
 
-            <p className="text-[8px] sm:text-[9px] text-stone-300 italic max-w-[90%] mx-auto mt-1 leading-normal" id="poster-tagline">
-              {data.tagline || "Escape the dark and bask in our gilded holiday lodge warmth."}
-            </p>
+            {editingId === 'tagline' ? (
+              <input
+                type="text"
+                value={data.tagline}
+                onChange={(e) => onUpdatePoster?.('tagline', e.target.value)}
+                onBlur={() => setEditingId(null)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') setEditingId(null);
+                }}
+                autoFocus
+                className="font-mono text-center text-[10px] bg-stone-850 text-stone-200 border border-amber-500/50 rounded px-2 py-0.5 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full max-w-xs"
+              />
+            ) : (
+              <p 
+                onClick={() => setEditingId('tagline')}
+                className="text-[8px] sm:text-[9px] text-stone-300 italic max-w-[90%] mx-auto mt-1 leading-normal cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded p-1 transition-all group flex items-center justify-center gap-1.5"
+                id="poster-tagline"
+                title="Click to edit tagline"
+              >
+                <span>{data.tagline || "Escape the dark and bask in our gilded holiday lodge warmth."}</span>
+                <span className="text-[9px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 pl-1">✏️</span>
+              </p>
+            )}
 
           </div>
 

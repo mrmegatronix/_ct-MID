@@ -210,6 +210,24 @@ export default function App() {
                 venueName={templateData.generalSettings.venueName}
                 tagline={templateData.generalSettings.tagline}
                 contactInfo={templateData.generalSettings.contactInfo}
+                onUpdateGeneralSettings={(field, val) => {
+                  setTemplateData(prev => ({
+                    ...prev,
+                    generalSettings: {
+                      ...prev.generalSettings,
+                      [field]: val
+                    }
+                  }));
+                }}
+                onUpdateMenuItem={(id, field, val) => {
+                  const updatedItems = templateData.menuItems.map(item => 
+                    item.id === id ? { ...item, [field]: val } : item
+                  );
+                  setTemplateData(prev => ({
+                    ...prev,
+                    menuItems: updatedItems
+                  }));
+                }}
               />
             )}
 
@@ -217,6 +235,15 @@ export default function App() {
               <PosterPreview 
                 data={templateData.poster} 
                 theme={activeTheme} 
+                onUpdatePoster={(field, val) => {
+                  setTemplateData(prev => ({
+                    ...prev,
+                    poster: {
+                      ...prev.poster,
+                      [field]: val
+                    }
+                  }));
+                }}
               />
             )}
 

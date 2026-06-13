@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MenuItem, ThemeColors } from '../types';
-import { Printer, Sliders, AlertCircle, Sparkles } from 'lucide-react';
+import { Printer, Sliders, Sparkles, Edit3 } from 'lucide-react';
 import CoastersLogo from './CoastersLogo';
 
 interface MenuPreviewProps {
@@ -9,9 +9,21 @@ interface MenuPreviewProps {
   venueName: string;
   tagline: string;
   contactInfo: string;
+  onUpdateGeneralSettings?: (field: string, value: string) => void;
+  onUpdateMenuItem?: (id: string, field: keyof MenuItem, value: string) => void;
 }
 
-export default function MenuPreview({ menuItems, theme, venueName, tagline, contactInfo }: MenuPreviewProps) {
+export default function MenuPreview({ 
+  menuItems, 
+  theme, 
+  venueName, 
+  tagline, 
+  contactInfo,
+  onUpdateGeneralSettings,
+  onUpdateMenuItem
+}: MenuPreviewProps) {
+  const [editingId, setEditingId] = useState<string | null>(null);
+
   // Group menu items by category
   const categories = {
     starters: menuItems.filter((i) => i.category === 'starters'),
@@ -24,6 +36,90 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
     window.print();
   };
 
+  // Reusable beautifully-aligned inline edit render helper for menu items
+  const renderMenuItemLine = (item: MenuItem) => {
+    return (
+      <div key={item.id} className="flex flex-col" id={`menu-item-${item.id}`}>
+        <div className="flex items-baseline justify-between gap-2" id={`menu-item-row-1-${item.id}`}>
+          <div className="flex items-center gap-1.5 flex-1" id={`menu-item-name-block-${item.id}`}>
+            {editingId === `item-name-${item.id}` ? (
+              <input
+                type="text"
+                value={item.name}
+                onChange={(e) => onUpdateMenuItem?.(item.id, 'name', e.target.value)}
+                onBlur={() => setEditingId(null)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') setEditingId(null);
+                }}
+                autoFocus
+                className="font-serif text-xs px-1.5 py-0.5 bg-stone-850 text-white border border-amber-500/50 rounded focus:outline-none focus:ring-1 focus:ring-amber-400 w-full"
+              />
+            ) : (
+              <span 
+                onClick={() => setEditingId(`item-name-${item.id}`)}
+                className="font-serif text-xs sm:text-sm font-semibold text-white tracking-wide cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded px-1 py-0.5 flex items-center justify-between group transition-all"
+                title="Click to edit item name"
+              >
+                <span>{item.name}</span>
+                <span className="text-[10px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity pl-1">✏️</span>
+              </span>
+            )}
+            
+            {item.tag && (
+              <span className={`text-[8px] px-1.5 py-0.5 rounded font-mono uppercase shrink-0 font-bold ${theme.badgeClass}`}>
+                {item.tag}
+              </span>
+            )}
+          </div>
+          <span className="w-3 mx-1 flex-1 border-b border-dotted border-white/20" />
+          
+          {editingId === `item-price-${item.id}` ? (
+            <input
+              type="text"
+              value={item.price}
+              onChange={(e) => onUpdateMenuItem?.(item.id, 'price', e.target.value)}
+              onBlur={() => setEditingId(null)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') setEditingId(null);
+              }}
+              autoFocus
+              className="font-mono text-xs px-1.5 py-0.5 bg-stone-850 text-amber-400 border border-amber-500/50 rounded focus:outline-none focus:ring-1 focus:ring-amber-400 w-16 text-right"
+            />
+          ) : (
+            <span 
+              onClick={() => setEditingId(`item-price-${item.id}`)}
+              className={`font-mono text-xs sm:text-sm font-semibold shrink-0 ${theme.accentClass} cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded px-1 py-0.5 flex items-center gap-1 group transition-all`}
+              title="Click to edit price"
+            >
+              {item.price}
+              <span className="text-[10px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">✏️</span>
+            </span>
+          )}
+        </div>
+
+        {editingId === `item-desc-${item.id}` ? (
+          <textarea
+            value={item.description}
+            onChange={(e) => onUpdateMenuItem?.(item.id, 'description', e.target.value)}
+            onBlur={() => setEditingId(null)}
+            autoFocus
+            className="text-[10px] leading-relaxed px-1.5 py-1 bg-stone-850 text-stone-200 border border-amber-500/50 rounded focus:outline-none focus:ring-1 focus:ring-amber-400 w-full min-h-[45px] mt-1"
+          />
+        ) : (
+          <p 
+            onClick={() => setEditingId(`item-desc-${item.id}`)}
+            className="text-[10px] leading-relaxed text-stone-300 mt-0.5 max-w-[92%] cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded px-1 py-0.5 flex items-center justify-between group text-left transition-all"
+            id={`menu-item-desc-${item.id}`}
+            title="Click to edit item description"
+          >
+            <span>{item.description}</span>
+            <span className="text-[10px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 pl-1">✏️</span>
+          </p>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="flex flex-col gap-4 w-full" id="menu-root">
       <div className="flex items-center justify-between" id="menu-preview-header">
@@ -32,10 +128,14 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
             <Sliders className="w-4 h-4 text-amber-400" /> A4 Restaurant Menu (1:1.414)
           </h3>
           <p className="text-xs text-stone-400">Print-ready standard format. Layout scales perfectly to fit premium high-density cardstocks</p>
+          <p className="text-[11px] text-amber-400/95 font-semibold mt-1 flex items-center gap-1">
+            <Edit3 className="w-3.5 h-3.5" /> 
+            <span>Click directly on any text or price on the template below to edit in place!</span>
+          </p>
         </div>
         <button
           onClick={handlePrint}
-          className="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-stone-950 font-medium px-4 py-1.5 rounded-lg text-xs flex items-center gap-1.5 transition-colors shadow-md"
+          className="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-stone-950 font-medium px-4 py-1.5 rounded-lg text-xs flex items-center gap-1.5 transition-colors shadow-md cursor-pointer"
           id="menu-print-btn"
         >
           <Printer className="w-3.5 h-3.5" />
@@ -59,29 +159,76 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
           <div className={`absolute top-6 right-6 text-xs select-none opacity-50 ${theme.accentClass}`}>❅</div>
           <div className={`absolute bottom-6 left-6 text-xs select-none opacity-50 ${theme.accentClass}`}>❅</div>
           <div className={`absolute bottom-6 right-6 text-xs select-none opacity-50 ${theme.accentClass}`}>❅</div>
-
+ 
           {/* Menu Main Card Content */}
           <div className="relative z-10 flex flex-col h-full justify-between" id="menu-inner-layout">
             
             {/* Menu Header Section */}
-            <div className="text-center pt-2 pb-4 flex flex-col items-center" id="menu-title-block">
+            <div className="text-center pt-2 pb-4 flex flex-col items-center w-full" id="menu-title-block">
               {theme.id === 'coasters-tavern' && (
                 <CoastersLogo size={65} variant="gold" className="mb-2" />
               )}
               <div className={`text-[10px] tracking-[0.3em] font-display font-medium uppercase mb-1.5 ${theme.accentClass}`} id="menu-pre-title">
                 YULETIDE CELEBRATIONS
               </div>
-              <h1 className="text-xl sm:text-2xl font-serif font-black tracking-widest uppercase mb-1" id="menu-main-heading">
-                <span className={theme.gradientText}>{venueName || "THE ALPINE SPRUCE"}</span>
-              </h1>
-              <div className="flex items-center justify-center gap-2 mb-2" id="menu-separator-header">
+
+              {editingId === 'venueName' ? (
+                <div className="flex justify-center w-full my-1 z-35">
+                  <input
+                    type="text"
+                    value={venueName}
+                    onChange={(e) => onUpdateGeneralSettings?.('venueName', e.target.value)}
+                    onBlur={() => setEditingId(null)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') setEditingId(null);
+                    }}
+                    autoFocus
+                    className="text-center font-serif text-lg sm:text-xl font-black tracking-widest uppercase bg-stone-850 text-white border border-amber-500/50 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full max-w-sm"
+                  />
+                </div>
+              ) : (
+                <h1 
+                  onClick={() => setEditingId('venueName')}
+                  className="text-xl sm:text-2xl font-serif font-black tracking-widest uppercase mb-1 cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/20 rounded px-2 py-0.5 transition-all group flex items-center justify-center gap-1.5"
+                  id="menu-main-heading"
+                  title="Click to edit venue name"
+                >
+                  <span className={theme.gradientText}>{venueName || "THE ALPINE SPRUCE"}</span>
+                  <span className="text-[10px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">✏️</span>
+                </h1>
+              )}
+
+              <div className="flex items-center justify-center gap-2 mb-2 w-full" id="menu-separator-header">
                 <span className="w-4 h-[1px] bg-white/20" />
                 <span className="text-xs italic font-serif opacity-75">Christmas Gastronomy Menu</span>
                 <span className="w-4 h-[1px] bg-white/20" />
               </div>
-              <p className="text-[10px] sm:text-xs text-stone-300 italic max-w-md mx-auto line-clamp-2" id="menu-tagline">
-                &ldquo;{tagline || "Bask in our gilded winter warmth"}&rdquo;
-              </p>
+
+              {editingId === 'tagline' ? (
+                <div className="flex justify-center w-full z-35">
+                  <input
+                    type="text"
+                    value={tagline}
+                    onChange={(e) => onUpdateGeneralSettings?.('tagline', e.target.value)}
+                    onBlur={() => setEditingId(null)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') setEditingId(null);
+                    }}
+                    autoFocus
+                    className="text-center font-sans text-xs italic bg-stone-850 text-stone-200 border border-amber-500/40 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-amber-400 w-full max-w-md"
+                  />
+                </div>
+              ) : (
+                <p 
+                  onClick={() => setEditingId('tagline')}
+                  className="text-[10px] sm:text-xs text-stone-300 italic max-w-md mx-auto cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-400/10 rounded px-2 py-0.5 transition-all group flex items-center justify-center gap-1.5"
+                  id="menu-tagline"
+                  title="Click to edit tagline"
+                >
+                  <span>&ldquo;{tagline || "Bask in our gilded winter warmth"}&rdquo;</span>
+                  <span className="text-[10px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">✏️</span>
+                </p>
+              )}
             </div>
 
             {/* Special Set Menu Promotional Banner */}
@@ -114,29 +261,7 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
                     <div className={`w-16 h-[1.5px] ${theme.dividerClass}`} />
                   </div>
                   <div className="grid grid-cols-1 gap-3.5" id="menu-starters-grid">
-                    {categories.starters.map((item) => (
-                      <div key={item.id} className="flex flex-col" id={`menu-item-${item.id}`}>
-                        <div className="flex items-baseline justify-between gap-2" id={`menu-item-row-1-${item.id}`}>
-                          <div className="flex items-center gap-1.5" id={`menu-item-name-block-${item.id}`}>
-                            <span className="font-serif text-xs sm:text-sm font-semibold text-white tracking-wide">
-                              {item.name}
-                            </span>
-                            {item.tag && (
-                              <span className={`text-[8px] px-1.5 py-0.5 rounded font-mono uppercase shrink-0 font-bold ${theme.badgeClass}`}>
-                                {item.tag}
-                              </span>
-                            )}
-                          </div>
-                          <span className="w-3 mx-1 flex-1 border-b border-dotted border-white/20" />
-                          <span className={`font-mono text-xs sm:text-sm font-semibold shrink-0 ${theme.accentClass}`}>
-                            {item.price}
-                          </span>
-                        </div>
-                        <p className="text-[10px] leading-relaxed text-stone-300 mt-0.5 max-w-[92%]" id={`menu-item-desc-${item.id}`}>
-                          {item.description}
-                        </p>
-                      </div>
-                    ))}
+                    {categories.starters.map(renderMenuItemLine)}
                   </div>
                 </div>
               )}
@@ -151,29 +276,7 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
                     <div className={`w-16 h-[1.5px] ${theme.dividerClass}`} />
                   </div>
                   <div className="grid grid-cols-1 gap-3.5" id="menu-mains-grid">
-                    {categories.mains.map((item) => (
-                      <div key={item.id} className="flex flex-col" id={`menu-item-${item.id}`}>
-                        <div className="flex items-baseline justify-between gap-2" id={`menu-item-row-1-${item.id}`}>
-                          <div className="flex items-center gap-1.5" id={`menu-item-name-block-${item.id}`}>
-                            <span className="font-serif text-xs sm:text-sm font-semibold text-white tracking-wide">
-                              {item.name}
-                            </span>
-                            {item.tag && (
-                              <span className={`text-[8px] px-1.5 py-0.5 rounded font-mono uppercase shrink-0 font-bold ${theme.badgeClass}`}>
-                                {item.tag}
-                              </span>
-                            )}
-                          </div>
-                          <span className="w-3 mx-1 flex-1 border-b border-dotted border-white/20" />
-                          <span className={`font-mono text-xs sm:text-sm font-semibold shrink-0 ${theme.accentClass}`}>
-                            {item.price}
-                          </span>
-                        </div>
-                        <p className="text-[10px] leading-relaxed text-stone-300 mt-0.5 max-w-[92%]" id={`menu-item-desc-${item.id}`}>
-                          {item.description}
-                        </p>
-                      </div>
-                    ))}
+                    {categories.mains.map(renderMenuItemLine)}
                   </div>
                 </div>
               )}
@@ -188,29 +291,7 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
                     <div className={`w-16 h-[1.5px] ${theme.dividerClass}`} />
                   </div>
                   <div className="grid grid-cols-1 gap-3.5" id="menu-desserts-grid">
-                    {categories.desserts.map((item) => (
-                      <div key={item.id} className="flex flex-col" id={`menu-item-${item.id}`}>
-                        <div className="flex items-baseline justify-between gap-2" id={`menu-item-row-1-${item.id}`}>
-                          <div className="flex items-center gap-1.5" id={`menu-item-name-block-${item.id}`}>
-                            <span className="font-serif text-xs sm:text-sm font-semibold text-white tracking-wide">
-                              {item.name}
-                            </span>
-                            {item.tag && (
-                              <span className={`text-[8px] px-1.5 py-0.5 rounded font-mono uppercase shrink-0 font-bold ${theme.badgeClass}`}>
-                                {item.tag}
-                              </span>
-                            )}
-                          </div>
-                          <span className="w-3 mx-1 flex-1 border-b border-dotted border-white/20" />
-                          <span className={`font-mono text-xs sm:text-sm font-semibold shrink-0 ${theme.accentClass}`}>
-                            {item.price}
-                          </span>
-                        </div>
-                        <p className="text-[10px] leading-relaxed text-stone-300 mt-0.5 max-w-[92%]" id={`menu-item-desc-${item.id}`}>
-                          {item.description}
-                        </p>
-                      </div>
-                    ))}
+                    {categories.desserts.map(renderMenuItemLine)}
                   </div>
                 </div>
               )}
@@ -222,9 +303,31 @@ export default function MenuPreview({ menuItems, theme, venueName, tagline, cont
               <span className={`text-[8px] tracking-wider uppercase font-mono px-3 py-1 rounded-full ${theme.badgeClass}`}>
                 ❅ Dietary Requirements available upon consultation ❅
               </span>
-              <p className="text-[8px] text-stone-400 font-mono mt-2" id="menu-footer-contact">
-                {contactInfo}
-              </p>
+              <div className="flex justify-center w-full mt-2">
+                {editingId === 'contactInfo' ? (
+                  <input
+                    type="text"
+                    value={contactInfo}
+                    onChange={(e) => onUpdateGeneralSettings?.('contactInfo', e.target.value)}
+                    onBlur={() => setEditingId(null)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') setEditingId(null);
+                    }}
+                    autoFocus
+                    className="font-mono text-[9px] text-center bg-stone-850 text-stone-200 border border-amber-500/40 rounded px-2 py-0.5 w-full max-w-xs focus:outline-none focus:ring-1 focus:ring-amber-400"
+                  />
+                ) : (
+                  <p 
+                    onClick={() => setEditingId('contactInfo')}
+                    className="text-[8px] text-stone-450 font-mono cursor-pointer hover:bg-white/5 hover:ring-1 hover:ring-amber-500/10 rounded px-2 py-0.5 transition-all inline-flex items-center gap-1 group"
+                    id="menu-footer-contact"
+                    title="Click to edit contact info"
+                  >
+                    <span>{contactInfo}</span>
+                    <span className="text-[9px] text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity pl-0.5">✏️</span>
+                  </p>
+                )}
+              </div>
             </div>
 
           </div>
