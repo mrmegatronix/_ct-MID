@@ -14,7 +14,7 @@
         }
         .poster-content {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            padding: 230px; box-sizing: border-box;
+            padding: 150px 80px 80px 80px; box-sizing: border-box;
             display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
             z-index: 20;
         }
@@ -27,11 +27,11 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 30; pointer-events: none;
         }
         .main-heading {
-            font-family: 'Cinzel', serif; font-size: 45px; font-weight: 900; 
+            font-family: 'Cinzel', serif; font-size: 55px; font-weight: 900; 
             background: linear-gradient(to bottom, #fde047, #f472b6, #d946ef); 
             -webkit-background-clip: text; color: transparent; text-align: center; 
-            margin-top: 0px; margin-bottom: 20px; z-index: 20; text-transform: uppercase;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.8);
+            margin-top: 0px; margin-bottom: 25px; z-index: 20; text-transform: uppercase;
+            filter: drop-shadow(0 0 15px rgba(253, 224, 71, 0.8));
         }
         .slide-container { 
             display: flex; flex-direction: column; align-items: center; 
@@ -40,36 +40,35 @@
         }
         .glass-box {
             border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.2); padding: 25px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2); padding: 25px 40px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255,255,255,0.1); 
             text-align: center; width: 100%; box-sizing: border-box;
         }
-        h1 { font-family: 'Cinzel', serif; font-size: 42px; font-weight: 900; color: #fff; margin: 0 0 10px 0; text-shadow: 0 3px 10px rgba(0,0,0,0.5); }
-        h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-style: italic; color: #fce7f3; margin: 0 0 15px 0; text-shadow: 0 3px 10px rgba(0,0,0,0.5); }
-        .course-title { font-family: 'Cinzel', serif; font-size: 22px; color: #fbbf24; margin: 15px 0 8px 0; letter-spacing: 3px; }
-        .date-badge { display: inline-block; background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(236, 72, 153, 0.6); padding: 10px 20px; font-size: 20px; color: #f9a8d4; border-radius: 50px; margin-bottom: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.5); font-weight: 900; }
-        ul { list-style: none; padding: 0; margin: 0; }
-        li { font-size: 24px; margin-bottom: 8px; color: #e0e0e0; text-transform: capitalize; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
-        li::before { content: '✦'; color: #ec4899; margin-right: 12px; font-size: 20px; }
-        .small-text { font-size: 18px; font-style: italic; color: #f9a8d4; margin-top: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+        h1 { font-family: 'Cinzel', serif; font-size: 45px; font-weight: 900; color: #fff; margin: 0 0 10px 0; text-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+        h2 { font-family: 'Playfair Display', serif; font-size: 32px; font-style: italic; color: #fce7f3; margin: 0 0 15px 0; text-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+        .course-title { font-family: 'Cinzel', serif; font-size: 26px; color: #fbbf24; margin: 15px 0 8px 0; letter-spacing: 3px; }
+        .date-badge { display: inline-block; background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(236, 72, 153, 0.6); padding: 10px 20px; font-size: 22px; color: #f9a8d4; border-radius: 50px; margin-bottom: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.5); font-weight: 900; }
+        ul { list-style: none; padding: 0; margin: 0 auto; display: inline-block; text-align: left; max-width: 95%; }
+        li { font-size: 26px; margin-bottom: 8px; color: #e0e0e0; text-transform: capitalize; text-shadow: 0 2px 8px rgba(0,0,0,0.8); position: relative; padding-left: 35px; line-height: 1.2;}
+        li::before { content: '✦'; color: #ec4899; position: absolute; left: 0; font-size: 22px; top: 2px; }
+        .small-text { font-size: 20px; font-style: italic; color: #f9a8d4; margin-top: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.8); text-align: center; }
     </style>
 </head>
 <body>
     <canvas id="snow-canvas"></canvas>
     <div class="icicles"></div>
     <div class="poster-content">
-        <div class="main-heading">Mid-Winter at Coasters Tavern</div>
+        <div class="main-heading">Mid-Winter Christmas at Coasters Tavern</div>
         <div class="slide-container">
             <!-- Menu -->
             <div class="glass-box" style="background: linear-gradient(to top right, #052e16, #7f1d1d, #052e16);">
                 <div class="date-badge">JULY 13TH - 19TH</div>
-                <h1>Mid-Winter Christmas Menu</h1>
-                <h2>2-Course Set Menu — $30</h2>
+                <h1>2-Course Set Menu — $30</h1>
                 <div class="course-title">~ MAIN ~</div>
                 <ul>
-                    <li>Roast Beef with Yorkshire pudding, Roast Pork, or Roast Chicken</li>
-                    <div class="small-text">served with roasted vegetables, seasonal greens and rich gravy</div>
+                    <li>Roast Beef with Yorkshire pudding, <br>Roast Pork, or Roast Chicken</li>
                 </ul>
+                <div class="small-text">served with roasted vegetables, seasonal greens and rich gravy</div>
                 <div class="course-title">~ DESSERT ~</div>
                 <ul>
                     <li>Christmas pudding and warm custard</li>
@@ -85,7 +84,7 @@
                     <li>$190 in vouchers to be won!</li>
                     <li>Prizes for best dressed!</li>
                 </ul>
-                <h2 style="margin-bottom: 0;">BOOKINGS ARE ESSENTIAL</h2>
+                <h2 style="margin-bottom: 0; margin-top: 15px;">BOOKINGS ARE ESSENTIAL</h2>
             </div>
             <!-- Karaoke -->
             <div class="glass-box" style="background: linear-gradient(to top right, #020617, #3b0764, #1e1b4b);">
@@ -93,7 +92,7 @@
                 <h1>Mid-Winter Christmas Karaoke</h1>
                 <h2>Hosted by Mel & Dave</h2>   
                 <ul>
-                    <li>Vouchers to be won! Every song sung puts you in the draw!</li>
+                    <li>Vouchers to be won! <br>Every song sung puts you in the draw!</li>
                     <li>Prizes for best Dressed!</li>
                     <li>Commences from 8:00 PM</li>
                 </ul>

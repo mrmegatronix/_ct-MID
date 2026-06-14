@@ -14,8 +14,8 @@
         }
         .poster-content {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            padding: 230px; box-sizing: border-box;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 180px 100px 100px 100px; box-sizing: border-box;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
             z-index: 20;
         }
         .icicles {
@@ -26,34 +26,43 @@
         #snow-canvas {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 30; pointer-events: none;
         }
+        .main-heading {
+            font-family: 'Cinzel', serif; font-size: 65px; font-weight: 900; 
+            background: linear-gradient(to bottom, #fde047, #f472b6, #d946ef); 
+            -webkit-background-clip: text; color: transparent; text-align: center; 
+            margin-top: 0px; margin-bottom: 50px; z-index: 20; text-transform: uppercase;
+            filter: drop-shadow(0 0 15px rgba(253, 224, 71, 0.8));
+        }
         .glass-box {
             background: rgba(0, 0, 0, 0.4); border-radius: 30px;
             border: 2px solid rgba(255, 255, 255, 0.1); padding: 50px 60px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); text-align: center; width: 100%; max-width: 740px; box-sizing: border-box;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); text-align: center; width: 100%; max-width: 900px; box-sizing: border-box;
         }
-        h1 { font-family: 'Cinzel', serif; font-size: 65px; font-weight: 900; background: linear-gradient(to bottom, #fde047, #f472b6, #d946ef); -webkit-background-clip: text; color: transparent; margin: 0 0 20px 0; }
+        h1 { font-family: 'Cinzel', serif; font-size: 55px; font-weight: 900; color: #fff; margin: 0 0 20px 0; }
         h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-style: italic; color: #fce7f3; margin: 0 0 30px 0; }
-        .course-title { font-family: 'Cinzel', serif; font-size: 30px; color: #fbbf24; margin: 25px 0 15px 0; letter-spacing: 4px; }
-        .date-badge { display: inline-block; background: rgba(217, 70, 239, 0.2); border: 2px solid rgba(236, 72, 153, 0.4); padding: 15px 30px; font-size: 25px; color: #f9a8d4; border-radius: 50px; margin-bottom: 30px; }
-        ul { list-style: none; padding: 0; margin: 0; }
-        li { font-size: 30px; margin-bottom: 15px; color: #e0e0e0; text-transform: capitalize; }
-        li::before { content: '✦'; color: #ec4899; margin-right: 15px; font-size: 28px; }
-        .small-text { font-size: 22px; font-style: italic; color: #f9a8d4; margin-top: 10px; }
+        .course-title { font-family: 'Cinzel', serif; font-size: 35px; color: #fbbf24; margin: 35px 0 20px 0; letter-spacing: 4px; }
+        .date-badge { display: inline-block; background: rgba(217, 70, 239, 0.2); border: 2px solid rgba(236, 72, 153, 0.4); padding: 15px 30px; font-size: 28px; color: #f9a8d4; border-radius: 50px; margin-bottom: 30px; font-weight: 900;}
+        ul { list-style: none; padding: 0; margin: 0 auto; display: inline-block; text-align: left; max-width: 95%; }
+        li { font-size: 35px; margin-bottom: 15px; color: #e0e0e0; text-transform: capitalize; position: relative; padding-left: 45px; line-height: 1.3;}
+        li::before { content: '✦'; color: #ec4899; position: absolute; left: 0; font-size: 30px; top: 2px; }
+        .small-text { font-size: 26px; font-style: italic; color: #f9a8d4; margin-top: 15px; text-align: center; }
     </style>
 </head>
 <body>
     <canvas id="snow-canvas"></canvas>
     <div class="icicles"></div>
     <div class="poster-content">
+        <div class="main-heading">Mid-Winter Christmas <br>at Coasters Tavern</div>
         <div class="glass-box">
             <div class="date-badge">JULY 13TH - 19TH</div>
-            <h1>Mid-Winter Christmas Menu</h1>
-            <h2>2-Course Set Menu — $30</h2>
+            <h1>2-Course Set Menu — $30</h1>
+            
             <div class="course-title">~ MAIN ~</div>
             <ul>
-                <li>Roast Beef with Yorkshire pudding, Roast Pork, or Roast Chicken</li>
-                <div class="small-text">served with roasted vegetables, seasonal greens and rich gravy</div>
+                <li>Roast Beef with Yorkshire pudding, <br>Roast Pork, or Roast Chicken</li>
             </ul>
+            <div class="small-text">served with roasted vegetables, seasonal greens and rich gravy</div>
+            
             <div class="course-title">~ DESSERT ~</div>
             <ul>
                 <li>Christmas pudding and warm custard</li>
