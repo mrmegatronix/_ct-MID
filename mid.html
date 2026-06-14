@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mid-Winter Christmas Slideshow</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;600;700;800&display=swap');
 
         :root {
             --pink: #ec4899;
@@ -25,13 +25,22 @@
             color: #fff;
         }
 
-        /* Gold Funk Theme Background */
+        /* Dynamic Theme Backgrounds */
         .poster-bg {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top right, #020617, #3b0764, #1e1b4b);
             z-index: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
         }
+
+        .poster-bg.active-bg {
+            opacity: 1;
+        }
+
+        .bg-menu { background: linear-gradient(to top right, #052e16, #7f1d1d, #052e16); }
+        .bg-quiz { background: linear-gradient(to top right, #020617, #1d4ed8, #0f172a); }
+        .bg-karaoke { background: linear-gradient(to top right, #020617, #3b0764, #1e1b4b); }
 
         /* Amber/Gold Icicles */
         .icicles {
@@ -57,25 +66,41 @@
         /* Slideshow Container */
         .slideshow-container {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 5;
+            top: 150px; left: 0; right: 0; bottom: 120px;
+            z-index: 15;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        .glass-box {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: clamp(20px, 4vh, 50px) clamp(30px, 5vw, 80px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255,255,255,0.05);
+            max-width: 95%;
+            max-height: 95%;
+            overflow: hidden; /* Remove scrollbars */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .slide {
             position: absolute;
-            width: 80%;
-            height: 70%;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
-            transform: scale(0.95);
+            transition: opacity 1s ease-in-out;
+            z-index: 10;
         }
 
         .slide.active {
@@ -83,39 +108,69 @@
             transform: scale(1);
         }
 
+        /* Glowing Animations */
+        @keyframes glow-h1 {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.8)) drop-shadow(0 0 40px rgba(251, 191, 36, 0.6)); }
+            50% { filter: drop-shadow(0 0 40px rgba(251, 191, 36, 1)) drop-shadow(0 0 80px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 120px rgba(251, 191, 36, 0.5)); }
+        }
+
+        @keyframes glow-h2 {
+            0%, 100% { text-shadow: 0 0 15px rgba(251, 191, 36, 0.7), 0 0 30px rgba(251, 191, 36, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(251, 191, 36, 1), 0 0 60px rgba(251, 191, 36, 0.9), 0 0 90px rgba(251, 191, 36, 0.5); }
+        }
+
+        @keyframes glow-course-title {
+            0%, 100% { text-shadow: 0 2px 15px rgba(251, 191, 36, 0.6), 0 0 30px rgba(251, 191, 36, 0.4); }
+            50% { text-shadow: 0 2px 25px rgba(251, 191, 36, 1), 0 0 50px rgba(251, 191, 36, 0.9), 0 0 80px rgba(251, 191, 36, 0.5); }
+        }
+
         /* Poster Typography */
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 6vw;
+            font-size: clamp(24px, 5vmin, 60px);
+            font-weight: 900;
             background: linear-gradient(to bottom, #fde047, #f472b6, #d946ef);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 4px 20px rgba(236, 72, 153, 0.4);
             margin: 0 0 20px 0;
             line-height: 1.1;
+            animation: glow-h1 3s infinite ease-in-out;
         }
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 3vw;
+            font-size: clamp(18px, 3.5vmin, 45px);
+            font-weight: 900;
             color: #fce7f3;
             margin: 0 0 30px 0;
             font-style: italic;
+            animation: glow-h2 3s infinite ease-in-out;
+        }
+
+        .course-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(14px, 2.5vmin, 35px);
+            font-weight: 900;
+            color: var(--gold-bright);
+            margin: 15px 0 10px 0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: glow-course-title 3s infinite ease-in-out;
         }
 
         .date-badge {
             display: inline-block;
             background: rgba(217, 70, 239, 0.2);
             border: 2px solid rgba(236, 72, 153, 0.4);
-            padding: 10px 30px;
+            padding: clamp(5px, 1vh, 15px) clamp(15px, 2vw, 30px);
             font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.8vw;
+            font-weight: 900;
+            font-size: clamp(12px, 2vmin, 25px);
             letter-spacing: 2px;
             color: #f9a8d4;
             border-radius: 50px;
-            margin-bottom: 40px;
+            margin-bottom: clamp(10px, 2vh, 25px);
             text-transform: uppercase;
             box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
         }
@@ -123,30 +178,22 @@
         ul {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0 0 20px 0;
         }
 
         li {
-            font-size: 2.2vw;
-            margin-bottom: 15px;
+            font-size: clamp(14px, 2.5vmin, 35px);
+            font-weight: 900;
+            margin-bottom: 10px;
             color: #e0e0e0;
+            text-transform: capitalize;
         }
 
         li::before {
             content: '✦';
             color: var(--pink);
             margin-right: 15px;
-            font-size: 1.8vw;
-        }
-
-        .logo {
-            position: absolute;
-            bottom: 30px;
-            font-family: 'Cinzel', serif;
-            font-size: 2vw;
-            color: rgba(255, 255, 255, 0.5);
-            letter-spacing: 4px;
-            z-index: 10;
+            font-size: clamp(12px, 2vmin, 30px);
         }
 
         /* Progress Bar */
@@ -155,23 +202,67 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 6px;
+            height: 14px;
             background: rgba(0,0,0,0.5);
             z-index: 20;
+        }
+
+        @keyframes glitter {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
         }
 
         .progress-bar {
             height: 100%;
             width: 0%;
-            background: var(--pink);
-            box-shadow: 0 0 10px var(--pink);
+            background: repeating-linear-gradient(
+                -45deg,
+                var(--gold-bright),
+                var(--gold-bright) 10px,
+                #fcd34d 10px,
+                #fcd34d 20px
+            );
+            background-size: 28px 28px;
+            animation: glitter 1s linear infinite;
+            box-shadow: 0 0 15px var(--gold-bright), 0 0 5px #fff;
         }
+
+        /* Snowman Animation */
+        .snowman-scene {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 25; /* above progress bar */
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .snowman {
+            position: absolute;
+            bottom: 0;
+            font-size: 60px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+        }
+
+        .dynamic-snowball {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            font-size: 25px;
+            filter: drop-shadow(0 2px 5px rgba(255,255,255,0.9));
+        }
+
+
 
     </style>
 </head>
 <body>
 
-    <div class="poster-bg"></div>
+    <div class="poster-bg bg-menu active-bg" id="bg-1"></div>
+    <div class="poster-bg bg-quiz" id="bg-2"></div>
+    <div class="poster-bg bg-karaoke" id="bg-3"></div>
     <div class="icicles"></div>
     <canvas id="snow-canvas"></canvas>
 
@@ -180,12 +271,12 @@
         <!-- Slide 1: Menu -->
         <div class="slide active" id="slide-1">
             <div class="date-badge">JULY 13TH - 19TH</div>
-            <h1>Mid-Winter Feast</h1>
+            <h1>Mid-Winter Christmas Menu</h1>
             <h2>2-Course Set Menu — $30</h2>
             <ul>
-                <li>Choice of Beef, Pork, or Chicken Roast</li>
-                <li>Christmas Pudding for Dessert</li>
-                <li>Served with rich, warm custard</li>
+                <li>Choice of Beef with Yorkshire pudding, Roast Pork, or Roast Chicken</li>
+                <li>Served with roasted vegetables, seasonal greens and rich gravy</li>
+                <li>Christmas pudding and warm custard</li>
             </ul>
         </div>
 
@@ -215,11 +306,147 @@
 
     </div>
 
-    <div class="logo">COASTERS TAVERN</div>
+    <!-- Snowman Animation -->
+    <div class="snowman-scene" id="snowman-scene">
+    </div>
 
     <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
 
     <script>
+        // Start Animations
+        function startAnimations() {
+            // Snowmen Logic (State Machine)
+            const scene = document.getElementById('snowman-scene');
+            
+            function throwSnowball(fromNode, toNode) {
+                const rect1 = fromNode.getBoundingClientRect();
+                const rect2 = toNode.getBoundingClientRect();
+                
+                const snowball = document.createElement('div');
+                snowball.className = 'dynamic-snowball';
+                snowball.innerText = '⚪';
+                
+                const sx = rect1.left + 30;
+                const ex = rect2.left + 30;
+                snowball.style.left = sx + 'px';
+                scene.appendChild(snowball);
+
+                const throwDuration = 600 + Math.random() * 200;
+                const distance = Math.abs(ex - sx);
+                const arcHeight = Math.min(distance / 3, 200);
+
+                snowball.animate([
+                    { transform: `translate(0, 0) scale(1)`, opacity: 1, offset: 0 },
+                    { transform: `translate(${(ex - sx) / 2}px, -${arcHeight}px) scale(1.3)`, opacity: 1, offset: 0.5 },
+                    { transform: `translate(${ex - sx}px, 20px) scale(1)`, opacity: 0, offset: 1 }
+                ], { duration: throwDuration, easing: 'ease-in-out' });
+
+                setTimeout(() => snowball.remove(), throwDuration);
+            }
+
+            function runSnowmenLogic() {
+                scene.innerHTML = '';
+                const s1 = document.createElement('div');
+                const s2 = document.createElement('div');
+                s1.className = 'snowman';
+                s2.className = 'snowman';
+                s1.innerText = '⛄';
+                s2.innerText = '⛄';
+
+                // 30% chance for a chase, 70% chance for stationary fight
+                const isChase = Math.random() < 0.3;
+
+                scene.appendChild(s1);
+                scene.appendChild(s2);
+
+                if (isChase) {
+                    const dir = Math.random() > 0.5 ? 1 : -1; 
+                    const distance = 300 + Math.random() * 300; 
+
+                    let start1 = dir === 1 ? -100 : window.innerWidth + 100;
+                    let start2 = dir === 1 ? start1 - distance : start1 + distance;
+
+                    let end1 = dir === 1 ? window.innerWidth + distance + 200 : -distance - 200;
+                    let end2 = dir === 1 ? window.innerWidth + 200 : -200;
+
+                    s1.style.left = start1 + 'px';
+                    s2.style.left = start2 + 'px';
+
+                    if (dir === -1) {
+                        s1.style.transform = 'scaleX(-1)';
+                        s2.style.transform = 'scaleX(-1)';
+                    }
+
+                    const duration = 8000 + Math.random() * 4000;
+
+                    s1.animate([
+                        { transform: `translateX(0) ${dir === -1 ? 'scaleX(-1)' : ''}` },
+                        { transform: `translateX(${end1 - start1}px) ${dir === -1 ? 'scaleX(-1)' : ''}` }
+                    ], { duration: duration, easing: 'linear' });
+
+                    s2.animate([
+                        { transform: `translateX(0) ${dir === -1 ? 'scaleX(-1)' : ''}` },
+                        { transform: `translateX(${end2 - start2}px) ${dir === -1 ? 'scaleX(-1)' : ''}` }
+                    ], { duration: duration, easing: 'linear' });
+
+                    const throwInterval = setInterval(() => {
+                        if (Math.random() > 0.4) return;
+                        throwSnowball(s2, s1);
+                    }, 600);
+
+                    setTimeout(() => {
+                        clearInterval(throwInterval);
+                        runSnowmenLogic();
+                    }, duration);
+
+                } else {
+                    // Stationary Fight
+                    s1.style.left = '10vw';
+                    s2.style.left = '80vw';
+                    s2.style.transform = 'scaleX(-1)';
+
+                    const jump = [
+                        { transform: 'translateY(0) scaleX(1)', offset: 0 },
+                        { transform: 'translateY(-15px) scaleX(1)', offset: 0.5 },
+                        { transform: 'translateY(0) scaleX(1)', offset: 1 }
+                    ];
+                    const jumpFlip = [
+                        { transform: 'translateY(0) scaleX(-1)', offset: 0 },
+                        { transform: 'translateY(-15px) scaleX(-1)', offset: 0.5 },
+                        { transform: 'translateY(0) scaleX(-1)', offset: 1 }
+                    ];
+
+                    const fightDuration = 10000 + Math.random() * 10000;
+                    
+                    const fightInterval = setInterval(() => {
+                        const thrower = Math.random() > 0.5 ? s1 : s2;
+                        const target = thrower === s1 ? s2 : s1;
+                        
+                        thrower.animate(thrower === s1 ? jump : jumpFlip, { duration: 300 });
+                        setTimeout(() => throwSnowball(thrower, target), 150);
+                    }, 800);
+
+                    setTimeout(() => {
+                        clearInterval(fightInterval);
+                        // Flee!
+                        s1.animate([
+                            { transform: `translateX(0) scaleX(1)` },
+                            { transform: `translateX(-20vw) scaleX(-1)` }
+                        ], { duration: 2000, easing: 'ease-in' });
+                        s2.animate([
+                            { transform: `translateX(0) scaleX(-1)` },
+                            { transform: `translateX(30vw) scaleX(1)` }
+                        ], { duration: 2000, easing: 'ease-in' });
+                        
+                        setTimeout(runSnowmenLogic, 2000);
+                    }, fightDuration);
+                }
+            }
+
+            runSnowmenLogic();
+        }
+        startAnimations();
+
         // Slideshow Logic
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
@@ -237,10 +464,33 @@
 
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
+            document.getElementById('bg-' + (currentSlide + 1)).classList.remove('active-bg');
+            
             currentSlide = (currentSlide + 1) % slides.length;
+            
             slides[currentSlide].classList.add('active');
+            document.getElementById('bg-' + (currentSlide + 1)).classList.add('active-bg');
             startProgress();
         }
+
+        // Fetch dynamic text content for slides
+        async function loadSlideContent() {
+            for (let i = 1; i <= 3; i++) {
+                try {
+                    // Cache busting to ensure latest text is loaded
+                    const response = await fetch(`slide${i}.txt?t=${new Date().getTime()}`);
+                    if (response.ok) {
+                        const text = await response.text();
+                        // Inject content inside glass boxes
+                        const wrap = (content) => `<div class="glass-box">${content}</div>`;
+                        document.getElementById(`slide-${i}`).innerHTML = wrap(text);
+                    }
+                } catch (error) {
+                    console.log(`Could not load slide${i}.txt locally due to CORS/Fetch rules, using default HTML content.`);
+                }
+            }
+        }
+        loadSlideContent();
 
         setInterval(nextSlide, 60000); // 60 seconds per slide
         startProgress(); // Initial start
