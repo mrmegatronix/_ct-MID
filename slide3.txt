@@ -1,7 +1,7 @@
 <div class="date-badge">SATURDAY, 18TH JULY</div>
-<h1>Mid-Winter Christmas Karaoke</h1>
+<h1>Mid-Winter Karaoke</h1>
+<h2>Hosted by Mel & Dave</h2>   
 <ul>
-    <h2>Hosted by Mel & Dave</h2>   
     <li>Vouchers to be won! Every song sung puts you in the draw!</li>
     <li>Prizes for best Dressed!</li>
     <li>Commences from 8:00 PM</li>

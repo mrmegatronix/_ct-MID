@@ -1,12 +1,12 @@
 <div class="date-badge">JULY 13TH - 19TH</div>
-<h1>Mid-Winter Christmas Menu</h1>
+<h1>Mid-Winter Menu</h1>
 <h2>2-Course Set Menu — $30</h2>
 
 <div class="course-title">~ MAIN ~</div>
 <ul>
     <li>Roast Beef with Yorkshire pudding, Roast Pork, or Roast Chicken</li>
-    all served with roasted vegetables, seasonal greens and rich gravy</li>
 </ul>
+<div class="small-text">served with roasted vegetables, seasonal greens and rich gravy</div>
 
 <div class="course-title">~ DESSERT ~</div>
 <ul>

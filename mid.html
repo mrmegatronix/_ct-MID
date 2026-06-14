@@ -158,6 +158,15 @@
             text-transform: uppercase;
             animation: glow-course-title 3s infinite ease-in-out;
         }
+        
+        .small-text {
+            font-size: clamp(14px, 2.5vmin, 30px);
+            font-style: italic;
+            color: #f9a8d4;
+            margin-top: 5px;
+            text-align: center;
+            text-transform: uppercase;
+        }
 
         .date-badge {
             display: inline-block;
@@ -272,11 +281,17 @@
         <!-- Slide 1: Menu -->
         <div class="slide active" id="slide-1">
             <div class="date-badge">JULY 13TH - 19TH</div>
-            <h1>Mid-Winter Christmas Menu</h1>
+            <h1>Mid-Winter Menu</h1>
             <h2>2-Course Set Menu — $30</h2>
+
+            <div class="course-title">~ MAIN ~</div>
             <ul>
-                <li>Choice of Beef with Yorkshire pudding, Roast Pork, or Roast Chicken</li>
-                <li>Served with roasted vegetables, seasonal greens and rich gravy</li>
+                <li>Roast Beef with Yorkshire pudding, Roast Pork, or Roast Chicken</li>
+            </ul>
+            <div class="small-text">served with roasted vegetables, seasonal greens and rich gravy</div>
+
+            <div class="course-title">~ DESSERT ~</div>
+            <ul>
                 <li>Christmas pudding and warm custard</li>
             </ul>
         </div>
@@ -284,24 +299,25 @@
         <!-- Slide 2: Quiz -->
         <div class="slide" id="slide-2">
             <div class="date-badge">WEDNESDAY, 15TH JULY</div>
-            <h1>Mid-Winter Quiz Night</h1>
+            <h1>Mid-Winter Quiz</h1>
             <h2>Assemble Your Sharpest Crew</h2>
             <ul>
                 <li>Starts at 7:00 PM Sharp</li>
-                <li>Bar tabs & craft baskets for winners</li>
+                <li>$190 in vouchers to be won!</li>
                 <li>Prizes for best dressed!</li>
             </ul>
+            <h2 style="margin-bottom: 0;">BOOKINGS ARE ESSENTIAL</h2>
         </div>
 
         <!-- Slide 3: Karaoke -->
         <div class="slide" id="slide-3">
             <div class="date-badge">SATURDAY, 18TH JULY</div>
             <h1>Mid-Winter Karaoke</h1>
-            <h2>Sing Your Heart Out</h2>
+            <h2>Hosted by Mel & Dave</h2>   
             <ul>
+                <li>Vouchers to be won! Every song sung puts you in the draw!</li>
+                <li>Prizes for best Dressed!</li>
                 <li>Commences from 8:00 PM</li>
-                <li>Golden Mic trophies to be won</li>
-                <li>Prizes for best dressed!</li>
             </ul>
         </div>
 
@@ -472,7 +488,7 @@
             progressBar.style.transition = 'none';
             progressBar.style.width = '0%';
             setTimeout(() => {
-                progressBar.style.transition = 'width 60s linear';
+                progressBar.style.transition = 'width 120s linear';
                 progressBar.style.width = '100%';
             }, 50);
         }
@@ -507,7 +523,7 @@
         }
         loadSlideContent();
 
-        setInterval(nextSlide, 60000); // 60 seconds per slide
+        setInterval(nextSlide, 120000); // 120 seconds per slide
         startProgress(); // Initial start
 
         // Snow Confetti Logic
