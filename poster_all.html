@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Events Poster</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            margin: 0; padding: 0; box-sizing: border-box;
+            width: 1200px; height: 1697px;
+            background: linear-gradient(to top right, #020617, #1e1b4b, #0f172a);
+            color: white; font-family: 'Inter', sans-serif;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            overflow: hidden; position: relative;
+        }
+        .icicles {
+            position: absolute; top: -5px; left: 0; width: 100%; height: 150px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150" preserveAspectRatio="none"><path d="M0,0 L0,50 L20,120 L40,40 L60,100 L80,30 L100,150 L120,60 L140,110 L160,20 L180,90 L200,40 L220,130 L240,50 L260,110 L280,30 L300,140 L320,60 L340,100 L360,20 L380,120 L400,40 L420,110 L440,30 L460,150 L480,50 L500,120 L520,40 L540,100 L560,30 L580,130 L600,60 L620,110 L640,20 L660,140 L680,40 L700,120 L720,50 L740,100 L760,30 L780,150 L800,60 L820,110 L840,20 L860,130 L880,40 L900,120 L920,50 L940,100 L960,30 L980,140 L1000,50 L1000,0 Z" fill="%23fbbf24" opacity="0.8"/></svg>');
+            background-size: 100% 100%; z-index: 10;
+        }
+        #snow-canvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 30; pointer-events: none;
+        }
+        .main-heading {
+            font-family: 'Cinzel', serif; font-size: 65px; font-weight: 900; 
+            background: linear-gradient(to bottom, #fde047, #f472b6, #d946ef); 
+            -webkit-background-clip: text; color: transparent; text-align: center; 
+            margin-top: 150px; margin-bottom: 20px; z-index: 20; text-transform: uppercase;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.8);
+        }
+        .slide-container { 
+            display: flex; flex-direction: column; align-items: center; 
+            justify-content: space-evenly; height: 100%; width: 100%; 
+            z-index: 20; padding-bottom: 40px; box-sizing: border-box; flex-grow: 1;
+        }
+        .glass-box {
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2); padding: 40px 50px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(255,255,255,0.1); 
+            text-align: center; width: 92%; box-sizing: border-box;
+        }
+        h1 { font-family: 'Cinzel', serif; font-size: 70px; font-weight: 900; color: #fff; margin: 0 0 15px 0; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        h2 { font-family: 'Playfair Display', serif; font-size: 45px; font-style: italic; color: #fce7f3; margin: 0 0 25px 0; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .course-title { font-family: 'Cinzel', serif; font-size: 35px; color: #fbbf24; margin: 20px 0 10px 0; letter-spacing: 4px; }
+        .date-badge { display: inline-block; background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(236, 72, 153, 0.6); padding: 15px 30px; font-size: 35px; color: #f9a8d4; border-radius: 50px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); font-weight: 900; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        li { font-size: 38px; margin-bottom: 12px; color: #e0e0e0; text-transform: capitalize; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        li::before { content: '✦'; color: #ec4899; margin-right: 15px; font-size: 30px; }
+        .small-text { font-size: 30px; font-style: italic; color: #f9a8d4; margin-top: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+    </style>
+</head>
+<body>
+    <canvas id="snow-canvas"></canvas>
+    <div class="icicles"></div>
+    <div class="main-heading">Mid-Winter at Coasters Tavern</div>
+    <div class="slide-container">
+        <!-- Menu -->
+        <div class="glass-box" style="background: linear-gradient(to top right, #052e16, #7f1d1d, #052e16);">
+            <div class="date-badge">JULY 13TH - 19TH</div>
+            <h1>Mid-Winter Christmas Menu</h1>
+            <h2>2-Course Set Menu — $30</h2>
+            <div class="course-title">~ MAIN ~</div>
+            <ul>
+                <li>Roast Beef with Yorkshire pudding, Roast Pork, or Roast Chicken</li>
+                <div class="small-text">served with roasted vegetables, seasonal greens and rich gravy</div>
+            </ul>
+            <div class="course-title">~ DESSERT ~</div>
+            <ul>
+                <li>Christmas pudding and warm custard</li>
+            </ul>
+        </div>
+        <!-- Quiz -->
+        <div class="glass-box" style="background: linear-gradient(to top right, #020617, #1d4ed8, #0f172a);">
+            <div class="date-badge">WEDNESDAY, 15TH JULY</div>
+            <h1>Mid-Winter Quiz Night</h1>
+            <h2>Assemble Your Sharpest Crew</h2>
+            <ul>
+                <li>Starts at 7:00 PM Sharp</li>
+                <li>$190 in vouchers to be won!</li>
+                <li>Prizes for best dressed!</li>
+            </ul>
+            <h2 style="margin-bottom: 0;">BOOKINGS ARE ESSENTIAL</h2>
+        </div>
+        <!-- Karaoke -->
+        <div class="glass-box" style="background: linear-gradient(to top right, #020617, #3b0764, #1e1b4b);">
+            <div class="date-badge">SATURDAY, 18TH JULY</div>
+            <h1>Mid-Winter Christmas Karaoke</h1>
+            <h2>Hosted by Mel & Dave</h2>   
+            <ul>
+                <li>Vouchers to be won! Every song sung puts you in the draw!</li>
+                <li>Prizes for best Dressed!</li>
+                <li>Commences from 8:00 PM</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('snow-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = 1200;
+        let height = canvas.height = 1697;
+        const particles = [];
+        for (let i = 0; i < 200; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: Math.random() * 5 + 2,
+                color: Math.random() > 0.8 ? '#fbbf24' : (Math.random() > 0.5 ? '#ec4899' : '#ffffff'),
+                opacity: Math.random() * 0.8 + 0.2
+            });
+        }
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.opacity;
+            ctx.fill();
+        });
+    </script>
+</body>
+</html>
