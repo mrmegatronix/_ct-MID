@@ -115,8 +115,8 @@
         }
 
         @keyframes glow-h2 {
-            0%, 100% { text-shadow: 0 0 15px rgba(251, 191, 36, 0.7), 0 0 30px rgba(251, 191, 36, 0.5); }
-            50% { text-shadow: 0 0 30px rgba(251, 191, 36, 1), 0 0 60px rgba(251, 191, 36, 0.9), 0 0 90px rgba(251, 191, 36, 0.5); }
+            0%, 100% { text-shadow: 0 0 15px rgba(59, 130, 246, 0.7), 0 0 30px rgba(59, 130, 246, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(59, 130, 246, 1), 0 0 60px rgba(59, 130, 246, 0.9), 0 0 90px rgba(59, 130, 246, 0.5); }
         }
 
         @keyframes glow-course-title {
@@ -135,7 +135,7 @@
             color: transparent;
             margin: 0 0 15px 0;
             line-height: 1.1;
-            animation: glow-h1 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.8)) drop-shadow(0 0 40px rgba(251, 191, 36, 0.6));
         }
 
         h2 {
@@ -156,7 +156,7 @@
             margin: 10px 0 5px 0;
             letter-spacing: 4px;
             text-transform: uppercase;
-            animation: glow-course-title 3s infinite ease-in-out;
+            text-shadow: 0 2px 15px rgba(251, 191, 36, 0.6), 0 0 30px rgba(251, 191, 36, 0.4);
         }
         
         .small-text {
@@ -274,7 +274,6 @@
     <div class="poster-bg bg-karaoke" id="bg-3"></div>
     <div class="icicles"></div>
     <canvas id="snow-canvas"></canvas>
-    <img src="logo.png" class="coasters-logo" alt="Coasters Tavern Logo" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); height: 120px; z-index: 40; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));">
 
     <div class="slideshow-container">
         

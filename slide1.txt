@@ -3,11 +3,11 @@
 <h2>2-Course Set Menu — $30</h2>
 <div class="course-title">~ MAIN ~</div>
 <ul>
-    <li>Roast Beef with Yorkshire pudding, Roast Pork, or Roast Chicken</li>
+    <li>Roast Beef with Yorkshire pudding, Roast Pork or Roast Chicken</li>
 </ul>
-<div class="small-text">served with roasted vegetables, seasonal greens and rich gravy</div>
+<div class="small-text">all served with roasted vegetables, seasonal greens & rich gravy</div>
 
 <div class="course-title">~ DESSERT ~</div>
 <ul>
-    <li>Christmas pudding and warm custard</li>
+    <li>Christmas pudding & warm custard</li>
 </ul>
