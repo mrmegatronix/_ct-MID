@@ -73,6 +73,41 @@
             pointer-events: none;
             mix-blend-mode: overlay;
         }
+        
+        /* Sparkles on the icicle tips */
+        .icicles::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle 3px at 10% 75%, rgba(255,255,255,1) 0%, transparent 100%),
+                radial-gradient(circle 4px at 30% 90%, rgba(255,255,255,1) 0%, transparent 100%),
+                radial-gradient(circle 3px at 60% 65%, rgba(255,255,255,1) 0%, transparent 100%),
+                radial-gradient(circle 4px at 20% 85%, rgba(255,255,255,0.8) 0%, transparent 100%),
+                radial-gradient(circle 3px at 50% 95%, rgba(255,255,255,0.9) 0%, transparent 100%),
+                radial-gradient(circle 5px at 80% 70%, rgba(255,255,255,0.7) 0%, transparent 100%);
+            background-size: 150px 100%, 150px 100%, 150px 100%, 200px 100%, 200px 100%, 200px 100%;
+            animation: ice-sparkle 3s infinite alternate ease-in-out;
+            mix-blend-mode: color-dodge;
+            pointer-events: none;
+            z-index: 2;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 40%, black 90%);
+            mask-image: linear-gradient(to bottom, transparent 40%, black 90%);
+        }
+
+        @keyframes ice-sparkle {
+            0% { 
+                background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px; 
+                opacity: 0.3;
+            }
+            50% { 
+                opacity: 1; filter: brightness(1.5);
+            }
+            100% { 
+                background-position: 15px 5px, 15px 5px, 15px 5px, -15px -5px, -15px -5px, -15px -5px; 
+                opacity: 0.3;
+            }
+        }
 
         /* Snow Confetti Canvas */
         #snow-canvas {
