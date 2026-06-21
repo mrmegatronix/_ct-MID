@@ -62,7 +62,7 @@
         <div class="main-heading">Mid-Winter Christmas at Coasters Tavern</div>
         <div class="slide-container">
             <!-- Menu -->
-            <div class="glass-box" style="background: linear-gradient(to top right, rgba(5,46,22,0.7), rgba(127,29,29,0.7), rgba(5,46,22,0.7));">
+            <div class="glass-box" id="poster-box-1" style="background: linear-gradient(to top right, rgba(5,46,22,0.7), rgba(127,29,29,0.7), rgba(5,46,22,0.7));">
 <div class="date-badge">JULY 13TH - 19TH</div>
 <h1>Mid-Winter Menu</h1>
 <h2>2-Course Set Menu — $30</h2>
@@ -79,7 +79,7 @@
 </ul>
             </div>
             <!-- Quiz -->
-            <div class="glass-box" style="background: linear-gradient(to top right, rgba(2,6,23,0.7), rgba(29,78,216,0.7), rgba(15,23,42,0.7));">
+            <div class="glass-box" id="poster-box-2" style="background: linear-gradient(to top right, rgba(2,6,23,0.7), rgba(29,78,216,0.7), rgba(15,23,42,0.7));">
 <div class="date-badge">WEDNESDAY, 15TH JULY</div>
 <h1>Mid-Winter Quiz</h1>
 <h2>Assemble Your Sharpest Crew</h2>
@@ -91,7 +91,7 @@
 <h2 style="margin-bottom: 0;">BOOKINGS ARE ESSENTIAL</h2>
             </div>
             <!-- Karaoke -->
-            <div class="glass-box" style="background: linear-gradient(to top right, rgba(2,6,23,0.7), rgba(59,7,100,0.7), rgba(30,27,75,0.7));">
+            <div class="glass-box" id="poster-box-3" style="background: linear-gradient(to top right, rgba(2,6,23,0.7), rgba(59,7,100,0.7), rgba(30,27,75,0.7));">
 <div class="date-badge">SATURDAY, 18TH JULY</div>
 <h1>Mid-Winter Karaoke</h1>
 <h2>Hosted by Mel & Dave</h2>   
@@ -108,6 +108,28 @@
         <div class="snowman" style="position: absolute; bottom: 0; right: 150px; font-size: 100px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); transform: scaleX(-1);">⛄</div>
     </div>
     <script>
+        // Fetch dynamic text content
+        const slideContents = {};
+        async function loadSlideContent() {
+            for (let i = 1; i <= 3; i++) {
+                try {
+                    const response = await fetch(`slide${i}.txt?t=${new Date().getTime()}`);
+                    if (response.ok) {
+                        const text = await response.text();
+                        if (slideContents[i] !== text) {
+                            slideContents[i] = text;
+                            const el = document.getElementById(`poster-box-${i}`);
+                            if (el) el.innerHTML = text;
+                        }
+                    }
+                } catch (error) {
+                    console.log(`Could not load slide${i}.txt locally.`);
+                }
+            }
+        }
+        loadSlideContent();
+        setInterval(loadSlideContent, 30000);
+
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = 1200;

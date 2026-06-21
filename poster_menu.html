@@ -59,7 +59,7 @@
     <div class="icicles"></div>
     <div class="poster-content">
         <div class="main-heading">Mid-Winter Christmas <br>at Coasters Tavern</div>
-        <div class="glass-box">
+        <div class="glass-box" id="poster-box-menu">
 <div class="date-badge">JULY 13TH - 19TH</div>
 <h1>Mid-Winter Menu</h1>
 <h2>2-Course Set Menu — $30</h2>
@@ -81,6 +81,26 @@
         <div class="snowman" style="position: absolute; bottom: 0; right: 150px; font-size: 100px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); transform: scaleX(-1);">⛄</div>
     </div>
     <script>
+        // Fetch dynamic text content
+        let menuContent = "";
+        async function loadSlideContent() {
+            try {
+                const response = await fetch(`slide1.txt?t=${new Date().getTime()}`);
+                if (response.ok) {
+                    const text = await response.text();
+                    if (menuContent !== text) {
+                        menuContent = text;
+                        const el = document.getElementById(`poster-box-menu`);
+                        if (el) el.innerHTML = text;
+                    }
+                }
+            } catch (error) {
+                console.log(`Could not load slide1.txt locally.`);
+            }
+        }
+        loadSlideContent();
+        setInterval(loadSlideContent, 30000);
+
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = 1200;

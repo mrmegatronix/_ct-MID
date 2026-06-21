@@ -504,6 +504,7 @@
         }
 
         // Fetch dynamic text content for slides
+        const slideContents = {};
         async function loadSlideContent() {
             for (let i = 1; i <= 3; i++) {
                 try {
@@ -511,9 +512,12 @@
                     const response = await fetch(`slide${i}.txt?t=${new Date().getTime()}`);
                     if (response.ok) {
                         const text = await response.text();
-                        // Inject content inside glass boxes
-                        const wrap = (content) => `<div class="glass-box">${content}</div>`;
-                        document.getElementById(`slide-${i}`).innerHTML = wrap(text);
+                        if (slideContents[i] !== text) {
+                            slideContents[i] = text;
+                            // Inject content inside glass boxes
+                            const wrap = (content) => `<div class="glass-box">${content}</div>`;
+                            document.getElementById(`slide-${i}`).innerHTML = wrap(text);
+                        }
                     }
                 } catch (error) {
                     console.log(`Could not load slide${i}.txt locally due to CORS/Fetch rules, using default HTML content.`);
@@ -521,6 +525,7 @@
             }
         }
         loadSlideContent();
+        setInterval(loadSlideContent, 30000);
 
         setInterval(nextSlide, 120000); // 120 seconds per slide
         startProgress(); // Initial start
