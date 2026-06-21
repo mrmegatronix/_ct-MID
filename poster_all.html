@@ -13,10 +13,22 @@
             padding: 115px; box-sizing: border-box; /* 2cm margin on all sides */
             display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
         }
+        /* Glass/Crystal Icicles */
         .icicles {
             position: absolute; top: -5px; left: 0; width: 100%; height: 150px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150" preserveAspectRatio="none"><path d="M0,0 L0,50 L20,120 L40,40 L60,100 L80,30 L100,150 L120,60 L140,110 L160,20 L180,90 L200,40 L220,130 L240,50 L260,110 L280,30 L300,140 L320,60 L340,100 L360,20 L380,120 L400,40 L420,110 L440,30 L460,150 L480,50 L500,120 L520,40 L540,100 L560,30 L580,130 L600,60 L620,110 L640,20 L660,140 L680,40 L700,120 L720,50 L740,100 L760,30 L780,150 L800,60 L820,110 L840,20 L860,130 L880,40 L900,120 L920,50 L940,100 L960,30 L980,140 L1000,50 L1000,0 Z" fill="%23fbbf24" opacity="0.8"/></svg>');
-            background-size: 100% 100%; z-index: 10;
+            background: repeating-linear-gradient(90deg, rgba(255,255,255,0) 0px, rgba(255,255,255,0.3) 15px, rgba(255,255,255,0) 30px), linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(200,230,255,0.6) 30%, rgba(255,255,255,0.2) 100%);
+            backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%);
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150" preserveAspectRatio="none"><path d="M0,0 L0,50 L20,120 L40,40 L60,100 L80,30 L100,150 L120,60 L140,110 L160,20 L180,90 L200,40 L220,130 L240,50 L260,110 L280,30 L300,140 L320,60 L340,100 L360,20 L380,120 L400,40 L420,110 L440,30 L460,150 L480,50 L500,120 L520,40 L540,100 L560,30 L580,130 L600,60 L620,110 L640,20 L660,140 L680,40 L700,120 L720,50 L740,100 L760,30 L780,150 L800,60 L820,110 L840,20 L860,130 L880,40 L900,120 L920,50 L940,100 L960,30 L980,140 L1000,50 L1000,0 Z" fill="black"/></svg>');
+            -webkit-mask-size: 100% 100%;
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150" preserveAspectRatio="none"><path d="M0,0 L0,50 L20,120 L40,40 L60,100 L80,30 L100,150 L120,60 L140,110 L160,20 L180,90 L200,40 L220,130 L240,50 L260,110 L280,30 L300,140 L320,60 L340,100 L360,20 L380,120 L400,40 L420,110 L440,30 L460,150 L480,50 L500,120 L520,40 L540,100 L560,30 L580,130 L600,60 L620,110 L640,20 L660,140 L680,40 L700,120 L720,50 L740,100 L760,30 L780,150 L800,60 L820,110 L840,20 L860,130 L880,40 L900,120 L920,50 L940,100 L960,30 L980,140 L1000,50 L1000,0 Z" fill="black"/></svg>');
+            mask-size: 100% 100%; z-index: 10;
+            filter: drop-shadow(0 8px 15px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 10px rgba(59, 130, 246, 0.8));
+        }
+        .icicles::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(105deg, transparent 15%, rgba(255,255,255,0.9) 20%, transparent 25%, transparent 60%, rgba(255,255,255,0.8) 63%, transparent 68%);
+            -webkit-mask-image: inherit; -webkit-mask-size: inherit;
+            mask-image: inherit; mask-size: inherit; pointer-events: none; mix-blend-mode: overlay;
         }
         #snow-canvas {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 30; pointer-events: none;
@@ -30,7 +42,7 @@
             background: linear-gradient(to bottom, #ffffff, #fde047, #f472b6); 
             -webkit-background-clip: text; color: transparent; text-align: center; 
             margin-top: 0px; margin-bottom: 30px; z-index: 40; position: relative; text-transform: uppercase;
-            filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(253, 224, 71, 1));
+            filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(59, 130, 246, 1));
         }
         .slide-container { 
             display: flex; flex-direction: column; align-items: center; 
@@ -45,9 +57,9 @@
             display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;
             flex-grow: 1; gap: 10px;
         }
-        h1 { font-family: 'Cinzel', serif; font-size: 48px; font-weight: 900; color: #fff; margin: 0; text-shadow: 0 3px 10px rgba(0,0,0,0.5); }
-        h2 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: bold; font-style: italic; color: #fce7f3; margin: 0; text-shadow: 0 3px 10px rgba(0,0,0,0.5); }
-        .course-title { font-family: 'Cinzel', serif; font-size: 28px; font-weight: bold; color: #fbbf24; margin: 0; letter-spacing: 3px; }
+        h1 { font-family: 'Cinzel', serif; font-size: 48px; font-weight: 900; color: #fff; margin: 0; text-shadow: 0 3px 10px rgba(0,0,0,0.5), 0 0 20px rgba(59, 130, 246, 0.8); }
+        h2 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: bold; font-style: italic; color: #fce7f3; margin: 0; text-shadow: 0 3px 10px rgba(0,0,0,0.5), 0 0 20px rgba(59, 130, 246, 0.8); }
+        .course-title { font-family: 'Cinzel', serif; font-size: 28px; font-weight: bold; color: #fbbf24; margin: 0; letter-spacing: 3px; text-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
         .date-badge { display: inline-block; background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(236, 72, 153, 0.6); padding: 10px 25px; font-size: 26px; color: #f9a8d4; border-radius: 50px; margin: 0; box-shadow: 0 3px 10px rgba(0,0,0,0.5); font-weight: 900; }
         ul { list-style: none; padding: 0; margin: 0; text-align: center; width: 100%; }
         li { font-size: 28px; font-weight: bold; margin-bottom: 8px; color: #e0e0e0; text-shadow: 0 2px 8px rgba(0,0,0,0.8); line-height: 1.3;}
