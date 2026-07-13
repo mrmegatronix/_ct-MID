@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Poster</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            margin: 0; padding: 0;
+            width: 1200px; height: 1697px;
+            background: linear-gradient(to top right, #052e16, #7f1d1d, #052e16);
+            color: white; font-family: 'Inter', sans-serif;
+            overflow: hidden; position: relative;
+            text-transform: uppercase;
+        }
+        .poster-content {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            padding: 230px 173px; box-sizing: border-box; /* 4cm top/bottom, 3cm left/right */
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+        }
+        /* Glass/Crystal Icicles */
+        .icicles {
+            position: absolute; top: -5px; left: 0; width: 100%; height: 200px;
+            background: repeating-linear-gradient(90deg, rgba(255,255,255,0) 0px, rgba(255,255,255,0.3) 15px, rgba(255,255,255,0) 30px), linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(200,230,255,0.6) 30%, rgba(255,255,255,0.2) 100%);
+            backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%);
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150" preserveAspectRatio="none"><path d="M0,0 L0,50 L20,120 L40,40 L60,100 L80,30 L100,150 L120,60 L140,110 L160,20 L180,90 L200,40 L220,130 L240,50 L260,110 L280,30 L300,140 L320,60 L340,100 L360,20 L380,120 L400,40 L420,110 L440,30 L460,150 L480,50 L500,120 L520,40 L540,100 L560,30 L580,130 L600,60 L620,110 L640,20 L660,140 L680,40 L700,120 L720,50 L740,100 L760,30 L780,150 L800,60 L820,110 L840,20 L860,130 L880,40 L900,120 L920,50 L940,100 L960,30 L980,140 L1000,50 L1000,0 Z" fill="black"/></svg>');
+            -webkit-mask-size: 100% 100%;
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150" preserveAspectRatio="none"><path d="M0,0 L0,50 L20,120 L40,40 L60,100 L80,30 L100,150 L120,60 L140,110 L160,20 L180,90 L200,40 L220,130 L240,50 L260,110 L280,30 L300,140 L320,60 L340,100 L360,20 L380,120 L400,40 L420,110 L440,30 L460,150 L480,50 L500,120 L520,40 L540,100 L560,30 L580,130 L600,60 L620,110 L640,20 L660,140 L680,40 L700,120 L720,50 L740,100 L760,30 L780,150 L800,60 L820,110 L840,20 L860,130 L880,40 L900,120 L920,50 L940,100 L960,30 L980,140 L1000,50 L1000,0 Z" fill="black"/></svg>');
+            mask-size: 100% 100%; z-index: 10;
+            filter: drop-shadow(0 8px 15px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 10px rgba(59, 130, 246, 0.8));
+        }
+        .icicles::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(105deg, transparent 15%, rgba(255,255,255,0.9) 20%, transparent 25%, transparent 60%, rgba(255,255,255,0.8) 63%, transparent 68%);
+            -webkit-mask-image: inherit; -webkit-mask-size: inherit;
+            mask-image: inherit; mask-size: inherit; pointer-events: none; mix-blend-mode: overlay;
+        }
+        .icicles::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle 3px at 10% 75%, rgba(255,255,255,1) 0%, transparent 100%),
+                radial-gradient(circle 4px at 30% 90%, rgba(255,255,255,1) 0%, transparent 100%),
+                radial-gradient(circle 3px at 60% 65%, rgba(255,255,255,1) 0%, transparent 100%),
+                radial-gradient(circle 4px at 20% 85%, rgba(255,255,255,0.8) 0%, transparent 100%),
+                radial-gradient(circle 3px at 50% 95%, rgba(255,255,255,0.9) 0%, transparent 100%),
+                radial-gradient(circle 5px at 80% 70%, rgba(255,255,255,0.7) 0%, transparent 100%);
+            background-size: 150px 100%, 150px 100%, 150px 100%, 200px 100%, 200px 100%, 200px 100%;
+            animation: ice-sparkle 3s infinite alternate ease-in-out;
+            mix-blend-mode: color-dodge; pointer-events: none; z-index: 2;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 40%, black 90%);
+            mask-image: linear-gradient(to bottom, transparent 40%, black 90%);
+        }
+        @keyframes ice-sparkle {
+            0% { background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px; opacity: 0.3; }
+            50% { opacity: 1; filter: brightness(1.5); }
+            100% { background-position: 15px 5px, 15px 5px, 15px 5px, -15px -5px, -15px -5px, -15px -5px; opacity: 0.3; }
+        }
+        #snow-canvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 30; pointer-events: none;
+        }
+        .coasters-logo { 
+            height: 120px; width: auto; margin-bottom: 10px; z-index: 40; position: relative;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8)); 
+        }
+        .main-heading {
+            font-family: 'Cinzel', serif; font-size: 60px; font-weight: 900; 
+            background: linear-gradient(to bottom, #ffffff, #fde047, #f472b6); 
+            -webkit-background-clip: text; color: transparent; text-align: center; 
+            margin-top: 0px; margin-bottom: 20px; z-index: 40; position: relative; text-transform: uppercase;
+            filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 30px rgba(59, 130, 246, 1)); line-height: 1.1;
+        }
+        .glass-box {
+            background: rgba(0, 0, 0, 0.7); border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.1); padding: 30px 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); text-align: center; width: 100%; max-width: 950px; box-sizing: border-box;
+            display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;
+            flex-grow: 1; position: relative; z-index: 20;
+        }
+        h1 { font-family: 'Cinzel', serif; font-size: 60px; font-weight: 900; color: #fff; margin: 0; text-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+        h2 { font-family: 'Playfair Display', serif; font-size: 46px; font-weight: bold; font-style: italic; color: #fce7f3; margin: 0; text-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+        .course-title { font-family: 'Cinzel', serif; font-size: 40px; font-weight: bold; color: #fbbf24; margin: 0; letter-spacing: 4px; text-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
+        .date-badge { display: inline-block; background: rgba(217, 70, 239, 0.2); border: 2px solid rgba(236, 72, 153, 0.4); padding: 10px 25px; font-size: 30px; color: #f9a8d4; border-radius: 50px; margin: 0; font-weight: 900;}
+        ul { list-style: none; padding: 0; margin: 0; text-align: center; width: 100%; }
+        li { font-size: 40px; font-weight: bold; margin-bottom: 10px; color: #e0e0e0; line-height: 1.3;}
+        li::before { content: '✦ '; color: #ec4899; font-size: 34px; margin-right: 10px; }
+        .small-text { font-size: 30px; font-weight: bold; font-style: italic; color: #f9a8d4; margin-top: 5px; text-align: center; }
+    </style>
+</head>
+<body>
+    <canvas id="snow-canvas"></canvas>
+    <div class="icicles"></div>
+    <div class="poster-content">
+        <div class="main-heading">Mid-Winter Christmas <br>at Coasters Tavern</div>
+        <div class="glass-box" id="poster-box-menu">
+<div class="date-badge">JULY 13TH - 19TH</div>
+<h1>Mid-Winter Menu</h1>
+<h2>2-Course Set Menu — $30</h2>
+
+<div class="course-title">~ MAIN ~</div>
+<ul>
+    <li>Roast Beef with Yorkshire pudding</li>
+    <li>Roast Pork</li>
+    <li>Roast Chicken</li>
+</ul>
+<div class="small-text">served with roasted vegetables, seasonal greens and rich gravy</div>
+
+<div class="course-title">~ DESSERT ~</div>
+<ul>
+    <li>Christmas pudding and warm custard</li>
+</ul>
+        </div>
+    </div>
+    <div class="snowman-scene" style="position: absolute; bottom: 40px; left: 0; width: 100%; height: 100px; z-index: 100; pointer-events: none; overflow: visible;">
+        <div class="snowman" style="position: absolute; bottom: 0; left: 150px; font-size: 100px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));">⛄</div>
+        <div class="snowman" style="position: absolute; bottom: 0; right: 150px; font-size: 100px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); transform: scaleX(-1);">⛄</div>
+    </div>
+    <div style="position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); z-index: 110; text-align: center;">
+        <img src="https://coasterstavern.co.nz/wp-content/uploads/2024/03/coasters-new-600-1.png" style="height: 110px; width: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));" alt="Coasters Tavern Logo">
+    </div>
+    <script>
+        // Fetch dynamic text content
+        let menuContent = "";
+        async function loadSlideContent() {
+            try {
+                const response = await fetch(`slide1.txt?t=${new Date().getTime()}`);
+                if (response.ok) {
+                    const text = await response.text();
+                    if (menuContent !== text) {
+                        menuContent = text;
+                        const el = document.getElementById(`poster-box-menu`);
+                        if (el) el.innerHTML = text;
+                    }
+                }
+            } catch (error) {
+                console.log(`Could not load slide1.txt locally.`);
+            }
+        }
+        loadSlideContent();
+        setInterval(loadSlideContent, 30000);
+
+        const canvas = document.getElementById('snow-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = 1200;
+        let height = canvas.height = 1697;
+        const particles = [];
+        for (let i = 0; i < 200; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: Math.random() * 5 + 2,
+                color: Math.random() > 0.8 ? '#fbbf24' : (Math.random() > 0.5 ? '#ec4899' : '#ffffff'),
+                opacity: Math.random() * 0.8 + 0.2
+            });
+        }
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.opacity;
+            ctx.fill();
+        });
+    </script>
+</body>
+</html>
