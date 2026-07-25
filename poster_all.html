@@ -71,25 +71,29 @@
         }
         .slide-container { 
             display: flex; flex-direction: column; align-items: center; 
-            justify-content: space-evenly; height: 100%; width: 100%; 
-            position: relative; z-index: 20; padding-bottom: 0px; box-sizing: border-box; flex-grow: 1; gap: 12px;
+            justify-content: flex-start; height: 100%; width: 100%; 
+            position: relative; z-index: 20; padding-bottom: 0px; box-sizing: border-box; flex-grow: 1; gap: 16px;
+        }
+        .bottom-row {
+            display: flex; flex-direction: row; width: 100%; gap: 16px;
+            justify-content: space-between; flex-grow: 1;
         }
         .glass-box {
             border-radius: 20px;
-            border: 2px solid rgba(15, 23, 42, 0.15); padding: 10px 20px;
+            border: 2px solid rgba(15, 23, 42, 0.15); padding: 12px 20px;
             box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08); 
             text-align: center; width: 100%; box-sizing: border-box;
             display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;
             flex-grow: 1; gap: 4px;
         }
-        h1 { font-family: 'Cinzel', serif; font-size: 36px; font-weight: 900; color: #0f172a; margin: 0; }
-        h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: bold; font-style: italic; color: #475569; margin: 0; }
-        .course-title { font-family: 'Cinzel', serif; font-size: 20px; font-weight: bold; color: #b45309; margin: 0; letter-spacing: 3px; }
-        .date-badge { display: inline-block; background: rgba(219, 39, 119, 0.1); border: 2px solid rgba(219, 39, 119, 0.4); padding: 6px 12px; font-size: 22px; color: #be185d; border-radius: 50px; margin: 0; font-weight: 900; }
+        h1 { font-family: 'Cinzel', serif; font-size: 44px; font-weight: 900; color: #0f172a; margin: 0; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: bold; font-style: italic; color: #475569; margin: 0; }
+        .course-title { font-family: 'Cinzel', serif; font-size: 22px; font-weight: bold; color: #b45309; margin: 0; letter-spacing: 3px; }
+        .date-badge { display: inline-block; background: rgba(219, 39, 119, 0.1); border: 2px solid rgba(219, 39, 119, 0.4); padding: 6px 12px; font-size: 24px; color: #be185d; border-radius: 50px; margin: 0; font-weight: 900; }
         ul { list-style: none; padding: 0; margin: 0; text-align: center; width: 100%; }
-        li { font-size: 22px; font-weight: bold; margin-bottom: 2px; color: #1e293b; line-height: 1.3;}
-        li::before { content: '✦ '; color: #db2777; font-size: 20px; margin-right: 12px; }
-        .small-text { font-size: 16px; font-weight: bold; font-style: italic; color: #b91c1c; margin-top: 2px; text-align: center; }
+        li { font-size: 26px; font-weight: bold; margin-bottom: 2px; color: #1e293b; line-height: 1.3;}
+        li::before { content: '✦ '; color: #db2777; font-size: 24px; margin-right: 12px; }
+        .small-text { font-size: 18px; font-weight: bold; font-style: italic; color: #b91c1c; margin-top: 2px; text-align: center; }
     </style>
 </head>
 <body>
@@ -117,29 +121,32 @@
     <li>Christmas pudding and warm custard</li>
 </ul>
             </div>
-            <!-- Quiz -->
-            <div class="glass-box" id="poster-box-2" style="background: linear-gradient(to top right, rgba(240,249,255,0.85), rgba(239,246,255,0.85), rgba(240,249,255,0.85)); border-color: rgba(30,58,138,0.2);">
-<div class="date-badge">WEDNESDAY, 15TH JULY</div>
-<h1>Mid-Winter Quiz</h1>
-<h2>Assemble Your Sharpest Crew</h2>
-<ul>
-    <li>Starts at 7:00 PM Sharp</li>
-    <li>$190 in vouchers to be won!</li>
-    <li>Prizes for best dressed!</li>
-</ul>
-<h2 style="margin-bottom: 0;">BOOKINGS ARE ESSENTIAL</h2>
-            </div>
-            <!-- Karaoke -->
-            <div class="glass-box" id="poster-box-3" style="background: linear-gradient(to top right, rgba(250,245,255,0.85), rgba(253,244,255,0.85), rgba(250,245,255,0.85)); border-color: rgba(88,28,135,0.2);">
-<div class="date-badge">SATURDAY, 18TH JULY</div>
-<h1>Mid-Winter Karaoke</h1>
-<h2>Hosted by Mel & Dave</h2>   
-<ul>
-    <li>Vouchers to be won!</li>
-    <li>Every song sung puts you in the draw!</li>
-    <li>Prizes for best Dressed!</li>
-    <li>Commences from 8:00 PM</li>
-</ul>
+            <!-- Bottom Row -->
+            <div class="bottom-row">
+                <!-- Quiz -->
+                <div class="glass-box" id="poster-box-2" style="background: linear-gradient(to top right, rgba(240,249,255,0.85), rgba(239,246,255,0.85), rgba(240,249,255,0.85)); border-color: rgba(30,58,138,0.2);">
+                    <div class="date-badge">WEDNESDAY, 15TH JULY</div>
+                    <h1>Mid-Winter Quiz</h1>
+                    <h2>Assemble Your Sharpest Crew</h2>
+                    <ul>
+                        <li>Starts at 7:00 PM Sharp</li>
+                        <li>$190 in vouchers to be won!</li>
+                        <li>Prizes for best dressed!</li>
+                    </ul>
+                    <h2 style="margin-bottom: 0;">BOOKINGS ARE ESSENTIAL</h2>
+                </div>
+                <!-- Karaoke -->
+                <div class="glass-box" id="poster-box-3" style="background: linear-gradient(to top right, rgba(250,245,255,0.85), rgba(253,244,255,0.85), rgba(250,245,255,0.85)); border-color: rgba(88,28,135,0.2);">
+                    <div class="date-badge">SATURDAY, 18TH JULY</div>
+                    <h1>Mid-Winter Karaoke</h1>
+                    <h2>Hosted by Mel & Dave</h2>   
+                    <ul>
+                        <li>Vouchers to be won!</li>
+                        <li>Every song sung puts you in the draw!</li>
+                        <li>Prizes for best Dressed!</li>
+                        <li>Commences from 8:00 PM</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
